@@ -1,0 +1,730 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>ECMAScript 6 Overview - Lainé Louis</title>
+  <meta name="author" content="Lainé Louis">
+
+  
+  <meta name="description" content="ECMAScript 6 Overview">
+  <meta name="keywords" content="miage, bordeaux, louis lainé, lainé, louis, javascript, nodejs, github, angularjs, ecmascript6">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="https://llaine.github.io//blog/2014/10/19/es6">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Lainé Louis" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Lainé Louis</a></h1>
+  
+    <h2>A Ninja coder blog.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:llaine.github.io/" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">À Propos</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">ECMAScript 6 Overview</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-10-19T12:45:46+02:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:45 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>After a great day at <a href="bdx.io">bdx.io</a>, i&rsquo;m going to present you the newest features about ECMAScript 6.</p>
+
+<h1>Intro</h1>
+
+<p>ES6 is the new version of JavaScript.</p>
+
+<p>Will be release at mid 2015.</p>
+
+<p>Let&rsquo;s see what&rsquo;s new !</p>
+
+<h1>Class</h1>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kr">class</span> <span class="nx">Car</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// keyword which define the constructor and the class attributes</span>
+</span><span class='line'>    <span class="nx">constructor</span><span class="p">(</span><span class="nx">name</span><span class="o">=</span><span class="s2">&quot;Tesla&quot;</span><span class="p">){</span> <span class="c1">// ES6 take default values</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">toString</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="s2">&quot;name = &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">let</span> <span class="nx">tesla</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Car</span><span class="p">();</span>
+</span><span class='line'><span class="nx">tesla</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="c1">// name = Tesla</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Import / Export</h1>
+
+<p>It&rsquo;s very easy to create modules.</p>
+
+<h2>We have the mother class.</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kr">class</span> <span class="nx">Vehicule</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kr">export</span> <span class="k">default</span> <span class="nx">Vehicule</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Inheritance</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kr">import</span> <span class="nx">Vehicule</span> <span class="nx">from</span> <span class="s1">&#39;./Vehicule&#39;</span><span class="p">;</span> <span class="c1">// No .js extension</span>
+</span><span class='line'>
+</span><span class='line'><span class="kr">class</span> <span class="nx">Car</span> <span class="kr">extends</span> <span class="nx">Vehicule</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">constructor</span><span class="p">(</span><span class="nx">name</span><span class="o">=</span><span class="s2">&quot;Tesla&quot;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kr">super</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">vroom</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Hey i&#39;m a &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot; car ! &quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kr">export</span> <span class="k">default</span> <span class="nx">Car</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>main.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kr">import</span> <span class="nx">Car</span> <span class="nx">from</span> <span class="s1">&#39;./Car&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="kd">let</span> <span class="nx">car</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Car</span><span class="p">();</span>
+</span><span class='line'><span class="nx">car</span><span class="p">.</span><span class="nx">vroom</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Fat arrow operator</h1>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Before ES6 </span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">plop</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">){</span> <span class="k">return</span> <span class="s2">&quot;Plop &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">;</span>  <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// With ES6</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">plop</span> <span class="o">=</span> <span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">return</span> <span class="s2">&quot;Plop &quot;</span> <span class="o">+</span> <span class="nx">name</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">plop</span><span class="p">(</span><span class="s2">&quot;Louis&quot;</span><span class="p">))</span> <span class="c1">// Plop Louis</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Note</h4>
+
+<ul>
+<li>Can&rsquo;t be newable</li>
+<li>No <em>arguments</em> parameters instead it&rsquo;s more about REST parameters.</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">plop</span> <span class="o">=</span> <span class="p">(...</span><span class="nx">name</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">name</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span>
+</span><span class='line'>        <span class="p">(</span><span class="nx">somebody</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">return</span> <span class="s2">&quot;Plop &quot;</span> <span class="o">+</span> <span class="nx">somebody</span>
+</span><span class='line'>    <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">plop</span><span class="p">(</span><span class="s2">&quot;Louis Lainé&quot;</span><span class="p">,</span> <span class="s2">&quot;John Doe&quot;</span><span class="p">,</span> <span class="s2">&quot;Toto&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Do not use the <em>Fat arrow</em> to define objects function.</p>
+
+<h1>var vs let</h1>
+
+<h2>Scope</h2>
+
+<p>var is scoped to the nearest function block (or global if outside a function block), and let is scoped to the nearest enclosing block (or global if outside any block), which can be smaller than a function block.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// let </span>
+</span><span class='line'><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// bar not visible out here.</span>
+</span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">bar</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="nx">bar</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="p">;</span> <span class="o">++</span><span class="nx">bar</span><span class="p">){</span>
+</span><span class='line'>        <span class="c1">// bar is visible </span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="c1">// bar is not visible</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="c1">// var</span>
+</span><span class='line'><span class="kd">function</span> <span class="nx">bar</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// bar is visible out here.</span>
+</span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="nx">foo</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="p">;</span> <span class="o">++</span><span class="nx">foo</span><span class="p">){</span>
+</span><span class='line'>        <span class="c1">// bar is visible </span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="c1">// bar is visible</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The let instruction also prevent you from redudant variables.</p>
+
+<p>Let declare variables at the beginning of the current block. If we re declare the variables again at the same level a <em>TypeError</em> will be thrown.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">let</span> <span class="nx">toto</span><span class="p">;</span>
+</span><span class='line'>  <span class="kd">let</span> <span class="nx">toto</span><span class="p">;</span> <span class="c1">// TypeError thrown.</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Promises</h1>
+
+<p>Promise have been around in JavaScript with some libraries as <em>Q</em>, <em>WinJS</em>, <em>when</em> but they new arrived natively in JavaScript!</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">let</span> <span class="nx">promise</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// Make an async call</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="cm">/* everything is fine now */</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;Yehee&quot;</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span><span class='line'>            <span class="nx">reject</span><span class="p">(</span><span class="s2">&quot;Too bad&quot;</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// In an other file ... </span>
+</span><span class='line'><span class="nx">promise</span><span class="p">.</span>
+</span><span class='line'>    <span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}).</span>
+</span><span class='line'>    <span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Let&rsquo;s see an little example with an ajaxRequest for example.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// Return a new promise.</span>
+</span><span class='line'>  <span class="k">return</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// Do the usual XHR stuff</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">req</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+</span><span class='line'>    <span class="nx">req</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="nx">url</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">req</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">// This is called even on 404 etc</span>
+</span><span class='line'>      <span class="c1">// so check the status</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">status</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// Resolve the promise with the response text</span>
+</span><span class='line'>        <span class="nx">resolve</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">response</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>      <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// Otherwise reject with the status text</span>
+</span><span class='line'>        <span class="c1">// which will hopefully be a meaningful error</span>
+</span><span class='line'>        <span class="nx">reject</span><span class="p">(</span><span class="nb">Error</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">statusText</span><span class="p">));</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>    <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// Handle network errors</span>
+</span><span class='line'>    <span class="nx">req</span><span class="p">.</span><span class="nx">onerror</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">reject</span><span class="p">(</span><span class="nb">Error</span><span class="p">(</span><span class="s2">&quot;Network Error&quot;</span><span class="p">));</span>
+</span><span class='line'>    <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// Make the request</span>
+</span><span class='line'>    <span class="nx">req</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Use </span>
+</span><span class='line'><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;story.json&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Success!&quot;</span><span class="p">,</span> <span class="nx">response</span><span class="p">);</span>
+</span><span class='line'><span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;Failed!&quot;</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Strings</h1>
+
+<p>You can easily template string.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">let</span> <span class="nx">firstName</span> <span class="o">=</span> <span class="s2">&quot;John&quot;</span>
+</span><span class='line'>  <span class="p">,</span> <span class="nx">lastName</span> <span class="o">=</span> <span class="s2">&quot;Coltrane&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">`</span><span class="nx">Hello</span><span class="p">,</span> <span class="nx">$</span><span class="p">{</span><span class="nx">firstName</span><span class="p">}</span> <span class="nx">$</span><span class="p">{</span><span class="nx">lastName</span><span class="p">}</span><span class="err">`</span><span class="p">);</span> <span class="c1">// Hello John Coltrane</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We can also made some multi lines strings.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">`</span>
+</span><span class='line'>    <span class="nx">Hello</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">{</span><span class="nx">firstName</span><span class="p">}</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">{</span><span class="nx">lastName</span><span class="p">}</span>
+</span><span class='line'>    <span class="err">`</span><span class="p">);</span>
+</span><span class='line'><span class="cm">/*</span>
+</span><span class='line'><span class="cm">    Hello</span>
+</span><span class='line'><span class="cm">    John</span>
+</span><span class='line'><span class="cm">    Coltrane</span>
+</span><span class='line'><span class="cm">*/</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Mixin</h1>
+
+<h2>Object.assign</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">let</span> <span class="nx">superman</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">firstName</span><span class="o">:</span> <span class="s2">&quot;Clark&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">lastName</span><span class="o">:</span> <span class="s2">&quot;Kent&quot;</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">let</span> <span class="nx">abilities</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">fly</span><span class="p">()</span><span class="o">:</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;I can fly&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span><span class="nx">superman</span><span class="p">,</span> <span class="nx">abilities</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">superman</span><span class="p">.</span><span class="nx">fly</span><span class="p">();</span> <span class="c1">// I can fly ! </span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Array.from</h2>
+
+<p>Before looping throw a <em>document.querySelector</em> it was necessary to change first the result in an Array.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Before ES6</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">items</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&quot;h1&quot;</span><span class="p">));</span>
+</span><span class='line'><span class="nx">items</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span>
+</span><span class='line'>    <span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">item</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">&quot;Hello&quot;</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// With ES6</span>
+</span><span class='line'><span class="nb">Array</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&quot;h1&quot;</span><span class="p">))</span>
+</span><span class='line'>    <span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">item</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Maps</h1>
+
+<p>Like in any other languages (or not) the maps arrived natively in JavaScript!</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">let</span> <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Map</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">map</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;myKeyOne&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">first</span><span class="o">:</span><span class="s2">&quot;firstValueOne&quot;</span><span class="p">,</span> <span class="nx">last</span><span class="o">:</span><span class="s2">&quot;lastValueOne&quot;</span> <span class="p">});</span>
+</span><span class='line'><span class="nx">map</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;myKeyTwo&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">first</span><span class="o">:</span><span class="s2">&quot;firstValueTwo&quot;</span><span class="p">,</span> <span class="nx">last</span><span class="o">:</span><span class="s2">&quot;lastValueTwo&quot;</span> <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">map</span><span class="p">.</span><span class="nx">size</span><span class="p">)</span> <span class="c1">// 2</span>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">map</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="s2">&quot;myKeyOne&quot;</span><span class="p">))</span> <span class="c1">// true </span>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">map</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;myKeyTwo&quot;</span><span class="p">))</span> <span class="c1">// { first:&quot;firstValueTwo&quot;, last:&quot;lastValueTwo&quot; }</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// We can also loop through the maps.</span>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">key</span> <span class="nx">of</span> <span class="nx">map</span><span class="p">.</span><span class="nx">keys</span><span class="p">())</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Key: %s&quot;</span><span class="p">,</span> <span class="nx">key</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="cm">/* Key: myKeyOne, Key: myKeyTwo */</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">value</span> <span class="nx">of</span> <span class="nx">map</span><span class="p">.</span><span class="nx">values</span><span class="p">())</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Value: %s %s&quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">.</span><span class="nx">first</span><span class="p">,</span> <span class="nx">value</span><span class="p">.</span><span class="nx">last</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Conclusion</h1>
+
+<p>We&rsquo;ve seen all the newest features which are very exciting.</p>
+
+<p>In the next article we&rsquo;ll see how to code with ES6 using a transpiler called traceur.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Lainé Louis</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2014-10-19T12:45:46+02:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:45 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/6/'>6</a>, <a class='category' href='/blog/categories/ecmascript/'>ecmascript</a>, <a class='category' href='/blog/categories/javascript/'>javascript</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="https://llaine.github.io//blog/2014/10/19/es6/" data-via="louis_laine" data-counturl="https://llaine.github.io//blog/2014/10/19/es6/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/10/12/websocket/" title="Previous Post: Introduction to webSockets with NodeJS">&laquo; Introduction to webSockets with NodeJS</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/10/19/es6/">ECMAScript 6 Overview</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/10/12/websocket/">Introduction to webSockets With NodeJS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/10/02/hacking-mean-part2/">Hacking MEAN Get Started With Your Own, Part 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/10/02/hacking-mean-part1/">Hacking MEAN Get Started With Your Own, Part 1</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/llaine">@llaine</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'llaine',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Lainé Louis -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'llaine-github-io';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'https://llaine.github.io//blog/2014/10/19/es6/';
+        var disqus_url = 'https://llaine.github.io//blog/2014/10/19/es6/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

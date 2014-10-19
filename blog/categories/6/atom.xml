@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 6 | Lainé Louis]]></title>
+  <link href="https://llaine.github.io//blog/categories/6/atom.xml" rel="self"/>
+  <link href="https://llaine.github.io//"/>
+  <updated>2014-10-19T16:57:45+02:00</updated>
+  <id>https://llaine.github.io//</id>
+  <author>
+    <name><![CDATA[Lainé Louis]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[ECMAScript 6 Overview]]></title>
+    <link href="https://llaine.github.io//blog/2014/10/19/es6/"/>
+    <updated>2014-10-19T12:45:46+02:00</updated>
+    <id>https://llaine.github.io//blog/2014/10/19/es6</id>
+    <content type="html"><![CDATA[<p>After a great day at <a href="bdx.io">bdx.io</a>, i&rsquo;m going to present you the newest features about ECMAScript 6.</p>
+
+<h1>Intro</h1>
+
+<p>ES6 is the new version of JavaScript.</p>
+
+<p>Will be release at mid 2015.</p>
+
+<p>Let&rsquo;s see what&rsquo;s new !</p>
+
+<h1>Class</h1>
+
+<pre><code class="javascript ">class Car {
+    // keyword which define the constructor and the class attributes
+    constructor(name="Tesla"){ // ES6 take default values
+        this.name = name;
+    }
+
+    toString() {
+        return "name = " + this.name;
+    }
+}
+
+let tesla = new Car();
+tesla.toString() // name = Tesla
+</code></pre>
+
+<h1>Import / Export</h1>
+
+<p>It&rsquo;s very easy to create modules.</p>
+
+<h2>We have the mother class.</h2>
+
+<pre><code class="javascript ">class Vehicule {
+    constructor(name) {
+        this.name = name;
+    }
+}
+
+export default Vehicule;
+</code></pre>
+
+<h2>Inheritance</h2>
+
+<pre><code class="javascript ">
+import Vehicule from './Vehicule'; // No .js extension
+
+class Car extends Vehicule {
+    constructor(name="Tesla") {
+        super(name);
+    }
+
+    vroom() {
+        console.log("Hey i'm a " + this.name + " car ! ");
+    }
+}
+
+export default Car;
+</code></pre>
+
+<pre><code class="javascript main.js">
+import Car from './Car';
+let car = new Car();
+car.vroom() 
+</code></pre>
+
+<h1>Fat arrow operator</h1>
+
+<pre><code class="javascript ">
+// Before ES6 
+var plop = function(name){ return "Plop " + name;  }; 
+
+// With ES6
+var plop = (name) =&gt; return "Plop " + name
+
+console.log(plop("Louis")) // Plop Louis
+</code></pre>
+
+<h4>Note</h4>
+
+<ul>
+<li>Can&rsquo;t be newable</li>
+<li>No <em>arguments</em> parameters instead it&rsquo;s more about REST parameters.</li>
+</ul>
+
+
+<pre><code class="javascript ">
+var plop = (...name) =&gt; name.forEach(
+        (somebody) =&gt; return "Plop " + somebody
+    );
+
+plop("Louis Lainé", "John Doe", "Toto");
+</code></pre>
+
+<p>Do not use the <em>Fat arrow</em> to define objects function.</p>
+
+<h1>var vs let</h1>
+
+<h2>Scope</h2>
+
+<p>var is scoped to the nearest function block (or global if outside a function block), and let is scoped to the nearest enclosing block (or global if outside any block), which can be smaller than a function block.</p>
+
+<pre><code class="javascript ">// let 
+function foo() {
+    // bar not visible out here.
+    for(let bar = 0 ; bar &lt; 10 ; ++bar){
+        // bar is visible 
+    }
+    // bar is not visible
+}
+// var
+function bar() {
+    // bar is visible out here.
+    for(var foo = 0 ; foo &lt; 10 ; ++foo){
+        // bar is visible 
+    }
+    // bar is visible
+}
+</code></pre>
+
+<p>The let instruction also prevent you from redudant variables.</p>
+
+<p>Let declare variables at the beginning of the current block. If we re declare the variables again at the same level a <em>TypeError</em> will be thrown.</p>
+
+<pre><code class="javascript ">if (x) {
+  let toto;
+  let toto; // TypeError thrown.
+}
+</code></pre>
+
+<h1>Promises</h1>
+
+<p>Promise have been around in JavaScript with some libraries as <em>Q</em>, <em>WinJS</em>, <em>when</em> but they new arrived natively in JavaScript!</p>
+
+<pre><code class="javascript ">
+let promise = new Promise((resolve, reject) =&gt; {
+        // Make an async call
+
+        if(/* everything is fine now */) {
+            resolve("Yehee");
+        }else{
+            reject("Too bad");
+        }
+    });
+
+
+// In an other file ... 
+promise.
+    then((data) =&gt; { 
+        console.log(data);
+    }).
+    catch((error) =&gt; {
+        console.log(error);
+    });
+</code></pre>
+
+<p>Let&rsquo;s see an little example with an ajaxRequest for example.</p>
+
+<pre><code class="javascript ">function get(url) {
+  // Return a new promise.
+  return new Promise(function(resolve, reject) {
+    // Do the usual XHR stuff
+    var req = new XMLHttpRequest();
+    req.open('GET', url);
+
+    req.onload = function() {
+      // This is called even on 404 etc
+      // so check the status
+      if (req.status == 200) {
+        // Resolve the promise with the response text
+        resolve(req.response);
+      }
+      else {
+        // Otherwise reject with the status text
+        // which will hopefully be a meaningful error
+        reject(Error(req.statusText));
+      }
+    };
+
+    // Handle network errors
+    req.onerror = function() {
+      reject(Error("Network Error"));
+    };
+
+    // Make the request
+    req.send();
+  });
+}
+
+// Use 
+get('story.json').then(function(response) {
+  console.log("Success!", response);
+}, function(error) {
+  console.error("Failed!", error);
+});
+</code></pre>
+
+<h1>Strings</h1>
+
+<p>You can easily template string.</p>
+
+<pre><code class="javascript ">
+let firstName = "John"
+  , lastName = "Coltrane";
+
+console.log(`Hello, ${firstName} ${lastName}`); // Hello John Coltrane
+</code></pre>
+
+<p>We can also made some multi lines strings.</p>
+
+<pre><code class="javascript">
+console.log(`
+    Hello 
+    ${firstName}
+    ${lastName}
+    `);
+/*
+    Hello
+    John
+    Coltrane
+*/
+</code></pre>
+
+<h1>Mixin</h1>
+
+<h2>Object.assign</h2>
+
+<pre><code class="javascript ">
+let superman = {
+    firstName: "Clark",
+    lastName: "Kent"
+};
+
+let abilities = {
+    fly(): =&gt; console.log("I can fly")
+};
+
+Object.assign(superman, abilities);
+
+superman.fly(); // I can fly ! 
+</code></pre>
+
+<h2>Array.from</h2>
+
+<p>Before looping throw a <em>document.querySelector</em> it was necessary to change first the result in an Array.</p>
+
+<pre><code class="javascript ">
+// Before ES6
+
+var items = Array.prototype.slice.apply(document.querySelectorAll("h1"));
+items.forEach(
+    function(item) { 
+        item.innerHTML = "Hello"; 
+        }
+    );
+
+// With ES6
+Array.from(document.querySelectorAll("h1"))
+    .forEach((item) =&gt; item.innerHTML = "Hello")
+</code></pre>
+
+<h1>Maps</h1>
+
+<p>Like in any other languages (or not) the maps arrived natively in JavaScript!</p>
+
+<pre><code class="javascript">
+let map = new Map();
+
+map.set("myKeyOne", { first:"firstValueOne", last:"lastValueOne" });
+map.set("myKeyTwo", { first:"firstValueTwo", last:"lastValueTwo" });
+
+console.log(map.size) // 2
+console.log(map.has("myKeyOne")) // true 
+console.log(map.get("myKeyTwo")) // { first:"firstValueTwo", last:"lastValueTwo" }
+
+
+// We can also loop through the maps.
+for (let key of map.keys()) {
+  console.log("Key: %s", key);
+}
+/* Key: myKeyOne, Key: myKeyTwo */
+
+for (let value of map.values()) {
+  console.log("Value: %s %s", value.first, value.last);
+}
+</code></pre>
+
+<h1>Conclusion</h1>
+
+<p>We&rsquo;ve seen all the newest features which are very exciting.</p>
+
+<p>In the next article we&rsquo;ll see how to code with ES6 using a transpiler called traceur.</p>
+]]></content>
+  </entry>
+  
+</feed>
