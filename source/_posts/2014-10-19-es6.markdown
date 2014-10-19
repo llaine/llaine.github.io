@@ -16,7 +16,7 @@ After a great day at [bdx.io](bdx.io), i'm going to present you the newest featu
 
 ES6 is the new version of JavaScript.
 
-Will be release at mid 2015.
+Will be released at mid 2015.
 
 Let's see what's new ! 
 
