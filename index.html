@@ -1,0 +1,2796 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Lainé Louis</title>
+  <meta name="author" content="Lainé Louis">
+
+  
+  <meta name="description" content="After a great day at bdx.io, i&rsquo;m going to present you the newest features about ECMAScript 6. Intro ES6 is the new version of JavaScript. Will &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="https://llaine.github.io/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Lainé Louis" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Lainé Louis</a></h1>
+  
+    <h2>A Ninja coder blog.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:llaine.github.io/" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">À Propos</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/10/19/es6/">ECMAScript 6 Overview</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-10-19T12:45:46+02:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:45 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After a great day at <a href="bdx.io">bdx.io</a>, i&rsquo;m going to present you the newest features about ECMAScript 6.</p>
+
+<h1>Intro</h1>
+
+<p>ES6 is the new version of JavaScript.</p>
+
+<p>Will be release at mid 2015.</p>
+
+<p>Let&rsquo;s see what&rsquo;s new !</p>
+
+<h1>Class</h1>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kr">class</span> <span class="nx">Car</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// keyword which define the constructor and the class attributes</span>
+</span><span class='line'>    <span class="nx">constructor</span><span class="p">(</span><span class="nx">name</span><span class="o">=</span><span class="s2">&quot;Tesla&quot;</span><span class="p">){</span> <span class="c1">// ES6 take default values</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">toString</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="s2">&quot;name = &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">let</span> <span class="nx">tesla</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Car</span><span class="p">();</span>
+</span><span class='line'><span class="nx">tesla</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="c1">// name = Tesla</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Import / Export</h1>
+
+<p>It&rsquo;s very easy to create modules.</p>
+
+<h2>We have the mother class.</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kr">class</span> <span class="nx">Vehicule</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kr">export</span> <span class="k">default</span> <span class="nx">Vehicule</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Inheritance</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kr">import</span> <span class="nx">Vehicule</span> <span class="nx">from</span> <span class="s1">&#39;./Vehicule&#39;</span><span class="p">;</span> <span class="c1">// No .js extension</span>
+</span><span class='line'>
+</span><span class='line'><span class="kr">class</span> <span class="nx">Car</span> <span class="kr">extends</span> <span class="nx">Vehicule</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">constructor</span><span class="p">(</span><span class="nx">name</span><span class="o">=</span><span class="s2">&quot;Tesla&quot;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kr">super</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">vroom</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Hey i&#39;m a &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot; car ! &quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kr">export</span> <span class="k">default</span> <span class="nx">Car</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>main.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kr">import</span> <span class="nx">Car</span> <span class="nx">from</span> <span class="s1">&#39;./Car&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="kd">let</span> <span class="nx">car</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Car</span><span class="p">();</span>
+</span><span class='line'><span class="nx">car</span><span class="p">.</span><span class="nx">vroom</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Fat arrow operator</h1>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Before ES6 </span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">plop</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">){</span> <span class="k">return</span> <span class="s2">&quot;Plop &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">;</span>  <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// With ES6</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">plop</span> <span class="o">=</span> <span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">return</span> <span class="s2">&quot;Plop &quot;</span> <span class="o">+</span> <span class="nx">name</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">plop</span><span class="p">(</span><span class="s2">&quot;Louis&quot;</span><span class="p">))</span> <span class="c1">// Plop Louis</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Note</h4>
+
+<ul>
+<li>Can&rsquo;t be newable</li>
+<li>No <em>arguments</em> parameters instead it&rsquo;s more about REST parameters.</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">plop</span> <span class="o">=</span> <span class="p">(...</span><span class="nx">name</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">name</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span>
+</span><span class='line'>        <span class="p">(</span><span class="nx">somebody</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">return</span> <span class="s2">&quot;Plop &quot;</span> <span class="o">+</span> <span class="nx">somebody</span>
+</span><span class='line'>    <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">plop</span><span class="p">(</span><span class="s2">&quot;Louis Lainé&quot;</span><span class="p">,</span> <span class="s2">&quot;John Doe&quot;</span><span class="p">,</span> <span class="s2">&quot;Toto&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Do not use the <em>Fat arrow</em> to define objects function.</p>
+
+<h1>var vs let</h1>
+
+<h2>Scope</h2>
+
+<p>var is scoped to the nearest function block (or global if outside a function block), and let is scoped to the nearest enclosing block (or global if outside any block), which can be smaller than a function block.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// let </span>
+</span><span class='line'><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// bar not visible out here.</span>
+</span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">bar</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="nx">bar</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="p">;</span> <span class="o">++</span><span class="nx">bar</span><span class="p">){</span>
+</span><span class='line'>        <span class="c1">// bar is visible </span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="c1">// bar is not visible</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="c1">// var</span>
+</span><span class='line'><span class="kd">function</span> <span class="nx">bar</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// bar is visible out here.</span>
+</span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="nx">foo</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="p">;</span> <span class="o">++</span><span class="nx">foo</span><span class="p">){</span>
+</span><span class='line'>        <span class="c1">// bar is visible </span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="c1">// bar is visible</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The let instruction also prevent you from redudant variables.</p>
+
+<p>Let declare variables at the beginning of the current block. If we re declare the variables again at the same level a <em>TypeError</em> will be thrown.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">let</span> <span class="nx">toto</span><span class="p">;</span>
+</span><span class='line'>  <span class="kd">let</span> <span class="nx">toto</span><span class="p">;</span> <span class="c1">// TypeError thrown.</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Promises</h1>
+
+<p>Promise have been around in JavaScript with some libraries as <em>Q</em>, <em>WinJS</em>, <em>when</em> but they new arrived natively in JavaScript!</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">let</span> <span class="nx">promise</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// Make an async call</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="cm">/* everything is fine now */</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;Yehee&quot;</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span><span class='line'>            <span class="nx">reject</span><span class="p">(</span><span class="s2">&quot;Too bad&quot;</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// In an other file ... </span>
+</span><span class='line'><span class="nx">promise</span><span class="p">.</span>
+</span><span class='line'>    <span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}).</span>
+</span><span class='line'>    <span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Let&rsquo;s see an little example with an ajaxRequest for example.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// Return a new promise.</span>
+</span><span class='line'>  <span class="k">return</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// Do the usual XHR stuff</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">req</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+</span><span class='line'>    <span class="nx">req</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="nx">url</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">req</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">// This is called even on 404 etc</span>
+</span><span class='line'>      <span class="c1">// so check the status</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">status</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// Resolve the promise with the response text</span>
+</span><span class='line'>        <span class="nx">resolve</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">response</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>      <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// Otherwise reject with the status text</span>
+</span><span class='line'>        <span class="c1">// which will hopefully be a meaningful error</span>
+</span><span class='line'>        <span class="nx">reject</span><span class="p">(</span><span class="nb">Error</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">statusText</span><span class="p">));</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>    <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// Handle network errors</span>
+</span><span class='line'>    <span class="nx">req</span><span class="p">.</span><span class="nx">onerror</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">reject</span><span class="p">(</span><span class="nb">Error</span><span class="p">(</span><span class="s2">&quot;Network Error&quot;</span><span class="p">));</span>
+</span><span class='line'>    <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// Make the request</span>
+</span><span class='line'>    <span class="nx">req</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Use </span>
+</span><span class='line'><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;story.json&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Success!&quot;</span><span class="p">,</span> <span class="nx">response</span><span class="p">);</span>
+</span><span class='line'><span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;Failed!&quot;</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Strings</h1>
+
+<p>You can easily template string.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">let</span> <span class="nx">firstName</span> <span class="o">=</span> <span class="s2">&quot;John&quot;</span>
+</span><span class='line'>  <span class="p">,</span> <span class="nx">lastName</span> <span class="o">=</span> <span class="s2">&quot;Coltrane&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">`</span><span class="nx">Hello</span><span class="p">,</span> <span class="nx">$</span><span class="p">{</span><span class="nx">firstName</span><span class="p">}</span> <span class="nx">$</span><span class="p">{</span><span class="nx">lastName</span><span class="p">}</span><span class="err">`</span><span class="p">);</span> <span class="c1">// Hello John Coltrane</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We can also made some multi lines strings.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">`</span>
+</span><span class='line'>    <span class="nx">Hello</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">{</span><span class="nx">firstName</span><span class="p">}</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">{</span><span class="nx">lastName</span><span class="p">}</span>
+</span><span class='line'>    <span class="err">`</span><span class="p">);</span>
+</span><span class='line'><span class="cm">/*</span>
+</span><span class='line'><span class="cm">    Hello</span>
+</span><span class='line'><span class="cm">    John</span>
+</span><span class='line'><span class="cm">    Coltrane</span>
+</span><span class='line'><span class="cm">*/</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Mixin</h1>
+
+<h2>Object.assign</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">let</span> <span class="nx">superman</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">firstName</span><span class="o">:</span> <span class="s2">&quot;Clark&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">lastName</span><span class="o">:</span> <span class="s2">&quot;Kent&quot;</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">let</span> <span class="nx">abilities</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">fly</span><span class="p">()</span><span class="o">:</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;I can fly&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span><span class="nx">superman</span><span class="p">,</span> <span class="nx">abilities</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">superman</span><span class="p">.</span><span class="nx">fly</span><span class="p">();</span> <span class="c1">// I can fly ! </span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Array.from</h2>
+
+<p>Before looping throw a <em>document.querySelector</em> it was necessary to change first the result in an Array.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Before ES6</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">items</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&quot;h1&quot;</span><span class="p">));</span>
+</span><span class='line'><span class="nx">items</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span>
+</span><span class='line'>    <span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">item</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">&quot;Hello&quot;</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// With ES6</span>
+</span><span class='line'><span class="nb">Array</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&quot;h1&quot;</span><span class="p">))</span>
+</span><span class='line'>    <span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">item</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Maps</h1>
+
+<p>Like in any other languages (or not) the maps arrived natively in JavaScript!</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">let</span> <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Map</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">map</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;myKeyOne&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">first</span><span class="o">:</span><span class="s2">&quot;firstValueOne&quot;</span><span class="p">,</span> <span class="nx">last</span><span class="o">:</span><span class="s2">&quot;lastValueOne&quot;</span> <span class="p">});</span>
+</span><span class='line'><span class="nx">map</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;myKeyTwo&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">first</span><span class="o">:</span><span class="s2">&quot;firstValueTwo&quot;</span><span class="p">,</span> <span class="nx">last</span><span class="o">:</span><span class="s2">&quot;lastValueTwo&quot;</span> <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">map</span><span class="p">.</span><span class="nx">size</span><span class="p">)</span> <span class="c1">// 2</span>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">map</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="s2">&quot;myKeyOne&quot;</span><span class="p">))</span> <span class="c1">// true </span>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">map</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;myKeyTwo&quot;</span><span class="p">))</span> <span class="c1">// { first:&quot;firstValueTwo&quot;, last:&quot;lastValueTwo&quot; }</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// We can also loop through the maps.</span>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">key</span> <span class="nx">of</span> <span class="nx">map</span><span class="p">.</span><span class="nx">keys</span><span class="p">())</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Key: %s&quot;</span><span class="p">,</span> <span class="nx">key</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="cm">/* Key: myKeyOne, Key: myKeyTwo */</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">value</span> <span class="nx">of</span> <span class="nx">map</span><span class="p">.</span><span class="nx">values</span><span class="p">())</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Value: %s %s&quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">.</span><span class="nx">first</span><span class="p">,</span> <span class="nx">value</span><span class="p">.</span><span class="nx">last</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Conclusion</h1>
+
+<p>We&rsquo;ve seen all the newest features which are very exciting.</p>
+
+<p>In the next article we&rsquo;ll see how to code with ES6 using a transpiler called traceur.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/10/12/websocket/">Introduction to webSockets With NodeJS</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-10-12T12:12:09+02:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:12 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1>Introduction</h1>
+
+<p>Today a small article about a new web standard, the webSockets.</p>
+
+<p>This new protocol allow to create a bi-directional connexion between the client and the server in order to solve some HTTP problems and his uni-directional connexion.</p>
+
+<p>You can easily create real time application as games, chat and so.</p>
+
+<p>The server is able to &ldquo;push&rdquo; informations on the client even if the client hasn&rsquo;t asked for.</p>
+
+<h1>Use case</h1>
+
+<p>We are going to create a simple chat.</p>
+
+<ul>
+<li>The user can send messages to connected clients with a username from a web page</li>
+<li>The user can send messages to connected clients from console.</li>
+<li>The server is able to count the number of connected client and trace the conversation.</li>
+</ul>
+
+
+<h1>Tree directory</h1>
+
+<figure class='code'><figcaption><span>Init the repository</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>mkdir webSocket <span class="o">&amp;&amp;</span> <span class="nb">cd </span>webSocket <span class="p">;</span> npm init
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We are going to use a simple library called <code>websocket</code> which is the (mostly) pure JavaScript implementation of the WebSocket protocol versions 8 and 13 for Node.</p>
+
+<figure class='code'><figcaption><span>package.json</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="s2">&quot;dependencies&quot;</span><span class="err">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nt">&quot;websocket&quot;</span><span class="p">:</span> <span class="s2">&quot;^1.0.8&quot;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="err">...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Server</h1>
+
+<p>Copy paste this code sample in a server.js file.</p>
+
+<figure class='code'><figcaption><span>server.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">WebSocketServer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;websocket&#39;</span><span class="p">).</span><span class="nx">server</span>
+</span><span class='line'>  <span class="p">,</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">,</span> <span class="nx">lesConnexions</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1">// Will store all the connection</span>
+</span><span class='line'>    <span class="c1">// process HTTP request. Since we&#39;re writing just WebSockets server</span>
+</span><span class='line'>    <span class="c1">// we don&#39;t have to implement anything.</span>
+</span><span class='line'>  <span class="p">,</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">()</span>
+</span><span class='line'>  <span class="p">,</span> <span class="nx">PORT</span> <span class="o">=</span> <span class="mi">1337</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/* bootstraping the HTTP server */</span>
+</span><span class='line'><span class="nx">wsServer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WebSocketServer</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">httpServer</span><span class="o">:</span> <span class="nx">server</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Server listenning on &quot;</span> <span class="o">+</span> <span class="nx">PORT</span> <span class="o">+</span> <span class="s2">&quot; ...&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/* when a new client is trying to connect on the server */</span>
+</span><span class='line'><span class="nx">wsServer</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;request&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">){</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">connection</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">accept</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">req</span><span class="p">.</span><span class="nx">origin</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// add the new connection in the current connection</span>
+</span><span class='line'>    <span class="nx">lesConnexions</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">connection</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">connection</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;message&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">message</span><span class="p">){</span>
+</span><span class='line'>        <span class="c1">// When a message is send</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">connection</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;close&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="c1">// When the connection is closed</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm">* Log into the NodeJS console</span>
+</span><span class='line'><span class="cm">* @item : the item to be logged</span>
+</span><span class='line'><span class="cm">*/</span>
+</span><span class='line'><span class="kd">function</span> <span class="nx">log</span><span class="p">(</span><span class="nx">item</span><span class="p">){</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;[&quot;</span> <span class="o">+</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">toDateString</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;] &quot;</span> <span class="o">+</span> <span class="nx">item</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is the basic implementation of the server with websocket package.
+Whe have here a server listenning to the <strong>1337</strong> port.</p>
+
+<h1>Client</h1>
+
+<h2>Console</h2>
+
+<p>The websocket library allow you to easily implement a client in a simple console app.</p>
+
+<figure class='code'><figcaption><span>client.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">WebSocketClient</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;websocket&#39;</span><span class="p">).</span><span class="nx">client</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WebSocketClient</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">client</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;connectFailed&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Connect Error: &#39;</span> <span class="o">+</span> <span class="nx">error</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">client</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;connect&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">connection</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;WebSocket client connected&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">connection</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Connection Error: &quot;</span> <span class="o">+</span> <span class="nx">error</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">connection</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;close&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;echo-protocol Connection Closed&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">connection</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// when a message is send</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="s1">&#39;ws://127.0.0.1:1337/&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Browser version</h2>
+
+<p>We also want to discuss through the tiny chat from a internet browser so let&rsquo;s create simple index.html file.</p>
+
+<p><strong>Note</strong> : I use bower to manage my libraries, in this case it&rsquo;s only jQuery.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span class='line'><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;UTF-8&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;title&gt;</span>WebSocket<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;body&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;head&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;span</span> <span class="na">id=</span><span class="s">&quot;state&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;name&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Pseudo&quot;</span> <span class="na">value=</span><span class="s">&quot;webUser&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;chatMessages&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;input&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;ul</span> <span class="na">id=</span><span class="s">&quot;messages&quot;</span><span class="nt">&gt;&lt;/ul&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;bower_components/jquery/dist/jquery.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;script&gt;</span>
+</span><span class='line'>      <span class="c1">// The client javascript implementation</span>
+</span><span class='line'>    <span class="nt">&lt;/script&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Related to the html file, we need to use the simple API to connect to our server.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm">* Send a message with a username</span>
+</span><span class='line'><span class="cm">* @content : the content of the message</span>
+</span><span class='line'><span class="cm">* @username : the username of the message</span>
+</span><span class='line'><span class="cm">*/</span>
+</span><span class='line'><span class="kd">function</span> <span class="nx">sendMessage</span><span class="p">(</span><span class="nx">content</span><span class="p">,</span> <span class="nx">username</span><span class="p">){</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">content</span> <span class="o">||</span> <span class="o">!</span><span class="nx">username</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">msg</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">txt</span> <span class="o">:</span> <span class="nx">content</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">username</span> <span class="o">:</span> <span class="nx">username</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">connection</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">msg</span><span class="p">));</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">){</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">state</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#state&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">,</span>  <span class="nx">input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#input&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">,</span>  <span class="nx">messages</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#messages&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">,</span>  <span class="nx">username</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#name&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nb">window</span><span class="p">.</span><span class="nx">WebSocket</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">WebSocket</span> <span class="o">||</span> <span class="nb">window</span><span class="p">.</span><span class="nx">MozWebSocket</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WebSocket</span><span class="p">(</span><span class="s1">&#39;ws://127.0.0.1:1337&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="nx">connection</span><span class="p">.</span><span class="nx">onopen</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>          <span class="c1">// connection is opened and ready to use</span>
+</span><span class='line'>          <span class="nx">state</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="s2">&quot;open&quot;</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="nx">connection</span><span class="p">.</span><span class="nx">onerror</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// an error occurred when sending/receiving data</span>
+</span><span class='line'>          <span class="nx">state</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="s2">&quot;error &quot;</span><span class="p">);</span>
+</span><span class='line'>          <span class="nx">input</span><span class="p">.</span><span class="nx">prop</span><span class="p">(</span><span class="s1">&#39;disabled&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+</span><span class='line'>          <span class="nx">username</span><span class="p">.</span><span class="nx">prop</span><span class="p">(</span><span class="s1">&#39;disabled&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="nx">connection</span><span class="p">.</span><span class="nx">onmessage</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// message is send</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>      <span class="nx">input</span><span class="p">.</span><span class="nx">keydown</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="cm">/* when the enter key is pressed */</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">===</span> <span class="mi">13</span><span class="p">){</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="kd">var</span> <span class="nx">theMsg</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="nx">sendMessage</span><span class="p">(</span><span class="nx">theMsg</span><span class="p">,</span> <span class="nx">username</span><span class="p">.</span><span class="nx">val</span><span class="p">());</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>  <span class="p">})(</span><span class="nx">jQuery</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now let&rsquo;s look at how to manager the sending and receiving of messages.</p>
+
+<h3>Server</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'>  <span class="c1">// In the request callback. </span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">log</span><span class="p">(</span><span class="s2">&quot;connection from &quot;</span> <span class="o">+</span> <span class="nx">connection</span><span class="p">.</span><span class="nx">remoteAddress</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">log</span><span class="p">(</span><span class="s2">&quot;currently &quot;</span> <span class="o">+</span> <span class="nx">lesConnexions</span><span class="p">.</span><span class="nx">length</span> <span class="o">+</span> <span class="s2">&quot; clients&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'> <span class="nx">connection</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// We only wants to send char, not bytes.</span>
+</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s2">&quot;utf8&quot;</span><span class="p">){</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">// for each connected clients</span>
+</span><span class='line'>      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="nx">lesConnexions</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">lesConnexions</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">sendUTF</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">utf8Data</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">connection</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;close&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">connection</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">lesConnexions</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">lesConnexions</span><span class="p">[</span><span class="nx">lesConnexions</span><span class="p">.</span><span class="nx">length</span><span class="p">],</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">log</span><span class="p">(</span><span class="s2">&quot;connection closed&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Client - console</h3>
+
+<p>The console implementation will be a little bit different because we need to get the user inputs.</p>
+
+<p>I&rsquo;m going to use the <strong>sys</strong> library.</p>
+
+<figure class='code'><figcaption><span>client.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">sys</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;sys&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">stdin</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">openStdin</span><span class="p">();</span>
+</span><span class='line'><span class="c1">// ...</span>
+</span><span class='line'>
+</span><span class='line'> <span class="nx">connection</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>     <span class="k">if</span> <span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>         <span class="kd">var</span> <span class="nx">msg</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">utf8Data</span><span class="p">);</span>
+</span><span class='line'>         <span class="k">if</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">username</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">username</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;--&gt; [&quot;</span> <span class="o">+</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">username</span> <span class="o">+</span> <span class="s2">&quot;] : &quot;</span><span class="o">+</span>  <span class="nx">msg</span><span class="p">.</span><span class="nx">txt</span>  <span class="o">+</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
+</span><span class='line'>     <span class="p">}</span>
+</span><span class='line'> <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'> <span class="c1">// add callback for user inputs</span>
+</span><span class='line'> <span class="nx">stdin</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>     <span class="c1">// note:  d is an object, and when converted to a string it will</span>
+</span><span class='line'>     <span class="c1">// end with a linefeed.  so we (rather crudely) account for that</span>
+</span><span class='line'>     <span class="c1">// with toString() and then substring()</span>
+</span><span class='line'>     <span class="kd">var</span> <span class="nx">msg</span> <span class="o">=</span> <span class="nx">d</span><span class="p">.</span><span class="nx">toString</span><span class="p">().</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">d</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>     <span class="k">if</span><span class="p">(</span><span class="nx">connection</span><span class="p">.</span><span class="nx">connected</span> <span class="o">||</span> <span class="nx">msg</span><span class="p">){</span>
+</span><span class='line'>         <span class="nx">connection</span><span class="p">.</span><span class="nx">sendUTF</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+</span><span class='line'>             <span class="nx">txt</span> <span class="o">:</span> <span class="nx">msg</span><span class="p">,</span>
+</span><span class='line'>             <span class="nx">username</span> <span class="o">:</span> <span class="s2">&quot;console&quot;</span>
+</span><span class='line'>         <span class="p">}));</span>
+</span><span class='line'>
+</span><span class='line'>     <span class="p">}</span>
+</span><span class='line'> <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Client - index.html</h3>
+
+<figure class='code'><figcaption><span>index.html</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'> <span class="nx">connection</span><span class="p">.</span><span class="nx">onmessage</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">messages</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span>
+</span><span class='line'>      <span class="s2">&quot;&lt;li&gt;&quot;</span>
+</span><span class='line'>        <span class="o">+</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">timeStamp</span><span class="p">).</span><span class="nx">toDateString</span><span class="p">()</span>
+</span><span class='line'>        <span class="o">+</span> <span class="s2">&quot; | &lt;strong&gt;&quot;</span> <span class="o">+</span> <span class="nx">value</span><span class="p">.</span><span class="nx">username</span>
+</span><span class='line'>        <span class="o">+</span>  <span class="s2">&quot;&lt;/strong&gt; - &lt;pre&gt; &quot;</span> <span class="o">+</span> <span class="nx">value</span><span class="p">.</span><span class="nx">txt</span>
+</span><span class='line'>        <span class="o">+</span> <span class="s2">&quot;&lt;/pre&gt;</span>
+</span><span class='line'><span class="s2">      + &quot;</span><span class="o">&lt;</span><span class="err">/li&gt;&quot;</span>
+</span><span class='line'>    <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Conclusion</h1>
+
+<p>We seen how to deal with webSockets through those simple use cases.</p>
+
+<p>You can find all the code we&rsquo;ve seen on <a href="https://gist.github.com/llaine/2072f26c3dcde373a141">github</a></p>
+
+<p>Feel free to comment for any informations!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/10/02/hacking-mean-part2/">Hacking MEAN Get Started With Your Own, Part 2</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-10-02T08:51:35+02:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>8:51 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Now that we have both part operationnal, let&rsquo;s create a simple application.</p>
+
+<p>I&rsquo;m a music lover, so why don&rsquo;t create a simple music library. :)</p>
+
+<h1>Models</h1>
+
+<figure class='code'><figcaption><span>song.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">mongoose</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mongoose&#39;</span><span class="p">),</span>
+</span><span class='line'>    <span class="nx">Schema</span> <span class="o">=</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">;</span>
+</span><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm">* The song model </span>
+</span><span class='line'><span class="cm">* @name : String, the name</span>
+</span><span class='line'><span class="cm">* @author: String the author</span>
+</span><span class='line'><span class="cm">* @releaseDate : String, the release date of the song </span>
+</span><span class='line'><span class="cm">* @styles: Array of string, represent all the style a song may have. </span>
+</span><span class='line'><span class="cm">*/</span>
+</span><span class='line'>
+</span><span class='line'><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">exports</span><span class="p">.</span><span class="nx">schema</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Schema</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">name</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">author</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">releaseDate</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">styles</span><span class="o">:</span> <span class="p">[</span><span class="nb">String</span><span class="p">]</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span>  <span class="nx">mongoose</span><span class="p">.</span><span class="nx">model</span><span class="p">(</span><span class="s1">&#39;music&#39;</span><span class="p">,</span> <span class="nx">exports</span><span class="p">.</span><span class="nx">schema</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>library.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">mongoose</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mongoose&#39;</span><span class="p">),</span>
+</span><span class='line'>    <span class="nx">Schema</span> <span class="o">=</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">;</span>
+</span><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm">* The library model </span>
+</span><span class='line'><span class="cm">* @name : String, the name</span>
+</span><span class='line'><span class="cm">* @creationDate : Date.now</span>
+</span><span class='line'><span class="cm">* @releaseDate : String, the release date of the song </span>
+</span><span class='line'><span class="cm">* @styles: Array of string, represent all the style a song may have. </span>
+</span><span class='line'><span class="cm">*/</span>
+</span><span class='line'><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">exports</span><span class="p">.</span><span class="nx">schema</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Schema</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">name</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">creationDate</span><span class="o">:</span> <span class="p">{</span> <span class="nx">type</span><span class="o">:</span> <span class="nb">Date</span><span class="p">,</span> <span class="k">default</span><span class="o">:</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span> <span class="p">},</span>
+</span><span class='line'>    <span class="nx">music</span><span class="o">:</span> <span class="p">[</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">]</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">model</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">model</span><span class="p">(</span><span class="s1">&#39;library&#39;</span><span class="p">,</span> <span class="nx">exports</span><span class="p">.</span><span class="nx">schema</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We will create a simple CRUD for the library and for the song.</p>
+
+<h1>Back end</h1>
+
+<h2>Library models</h2>
+
+<p>What we are going to create, is a RESTFul API.
+Using express and mongoose functions to save/find and send our datas.</p>
+
+<p>I create CRUD functions, which are going to be called by my REST Service</p>
+
+<p>For the application, i create a simple helpers, which is going to help us handle the mongoDb response.</p>
+
+<figure class='code'><figcaption><span>helpers/utils.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// ...</span>
+</span><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> * Handle a MongoDb response</span>
+</span><span class='line'><span class="cm"> * @param err</span>
+</span><span class='line'><span class="cm"> * @param r</span>
+</span><span class='line'><span class="cm"> * @returns {*}</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="nx">helper</span><span class="p">.</span><span class="nx">handleResponse</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">r</span><span class="p">){</span>
+</span><span class='line'>    <span class="k">try</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+</span><span class='line'>        <span class="nx">helper</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">r</span><span class="p">;</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then in my library service.</p>
+
+<figure class='code'><figcaption><span>libraryService.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'> <span class="cm">/**</span>
+</span><span class='line'><span class="cm"> * GET -&gt; /rest/library/</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="cm">/* find all document in the library collection */</span>
+</span><span class='line'>    <span class="nx">libraryRepo</span><span class="p">.</span><span class="nx">find</span><span class="p">().</span><span class="nx">exec</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">r</span><span class="p">){</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="cm">/* handle response */</span>
+</span><span class='line'>        <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span>
+</span><span class='line'>            <span class="nx">helpers</span><span class="p">.</span><span class="nx">handleResponse</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> * GET -&gt; /rest/library/:id</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/:id&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">){</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="cm">/* _id ObjectId type. */</span>
+</span><span class='line'>    <span class="nx">libraryRepo</span><span class="p">.</span><span class="nx">findOne</span><span class="p">(</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="nx">_id</span><span class="o">:</span> <span class="k">new</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">).</span><span class="nx">exec</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">r</span><span class="p">){</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="cm">/* handle response */</span>
+</span><span class='line'>        <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span>
+</span><span class='line'>            <span class="nx">helpers</span><span class="p">.</span><span class="nx">handleResponse</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> * POST -&gt; /rest/library</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="nx">router</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">){</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="cm">/* create a new library document */</span>
+</span><span class='line'>    <span class="k">new</span> <span class="nx">libraryRepo</span><span class="p">({</span>
+</span><span class='line'>        <span class="nx">name</span><span class="o">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">music</span><span class="o">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">songs</span>
+</span><span class='line'>    <span class="p">})</span>
+</span><span class='line'>    <span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="cm">/* send a 200 if everything ok ! */</span>
+</span><span class='line'>        <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span>
+</span><span class='line'>            <span class="nx">helpers</span><span class="p">.</span><span class="nx">handleResponse</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">).</span><span class="nx">end</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Mongoose is very functional and uses the same query language as the MongoDb console. Very helpful to train.</p>
+
+<p>I also use <code>exec()</code> in all my mongo call.
+This function, allow you to chain database queries and execute them at the end with all the predicate you selected.</p>
+
+<p><a href="http://mongoosejs.com/docs/populate.html">Mongoose Query Language</a></p>
+
+<p>You also notice that i used <strong>ObjectId</strong> to find by id.
+ObjectId is a 12-byte BSON type, constructed using:</p>
+
+<ul>
+<li>a 4-byte value representing the seconds since the Unix epoch,</li>
+<li>a 3-byte machine identifier,</li>
+<li>a 2-byte process id, and</li>
+<li>a 3-byte counter, starting with a random value.</li>
+</ul>
+
+
+<p>In MongoDB, documents stored in a collection require a unique <em>id field that acts as a primary key. Because ObjectIds are small, most likely unique, and fast to generate, MongoDB uses ObjectIds as the default value for the </em>id field if the _id field is not specified.</p>
+
+<h3>Testing the API</h3>
+
+<p>To test the service, i used <a href="https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm">PostMAN</a>
+which is REST client for testing API.
+You can use old good <code>curl -X POST</code>, but Postman is very usefull.</p>
+
+<p>So after populating my database with some documents, i could get all resources..</p>
+
+<figure class='code'><figcaption><span>/rest/library -X GET</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">[</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="nt">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;542d37f66e2a40ee33bd6491&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="nt">&quot;__v&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+</span><span class='line'>        <span class="nt">&quot;music&quot;</span><span class="p">:</span> <span class="p">[],</span>
+</span><span class='line'>        <span class="nt">&quot;creationDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-10-02T11:33:10.501Z&quot;</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>    <span class="err">...</span>
+</span><span class='line'><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I can also easily access to a particular resource.</p>
+
+<figure class='code'><figcaption><span>/rest/library/542d37e3856d759d33ba3d40</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="nt">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;542d37e3856d759d33ba3d40&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;__v&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;music&quot;</span><span class="p">:</span> <span class="p">[],</span>
+</span><span class='line'>    <span class="nt">&quot;creationDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-10-02T11:32:51.985Z&quot;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Song models</h2>
+
+<p>Pretty much the same logic here.</p>
+
+<figure class='code'><figcaption><span>songService.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> * GET -&gt; /rest/song/</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">){</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="cm">/* fetch all the song */</span>
+</span><span class='line'>    <span class="nx">songRepo</span><span class="p">.</span><span class="nx">find</span><span class="p">().</span><span class="nx">exec</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">r</span><span class="p">){</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="cm">/* handle response */</span>
+</span><span class='line'>        <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span>
+</span><span class='line'>            <span class="nx">helpers</span><span class="p">.</span><span class="nx">handleResponse</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> * GET -&gt; /rest/song/:id</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/:id&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">){</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="cm">/* _id ObjectId type. */</span>
+</span><span class='line'>    <span class="nx">songRepo</span><span class="p">.</span><span class="nx">findOne</span><span class="p">(</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="nx">_id</span><span class="o">:</span> <span class="k">new</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">).</span><span class="nx">exec</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">r</span><span class="p">){</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="cm">/* handle response */</span>
+</span><span class='line'>        <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span>
+</span><span class='line'>            <span class="nx">helpers</span><span class="p">.</span><span class="nx">handleResponse</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> * POST -&gt; /rest/song</span>
+</span><span class='line'><span class="cm"> * Create a new song.</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="nx">router</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">){</span>
+</span><span class='line'>    <span class="cm">/* create a document from the POST params */</span>
+</span><span class='line'>    <span class="k">new</span> <span class="nx">songRepo</span><span class="p">({</span>
+</span><span class='line'>        <span class="nx">name</span><span class="o">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">author</span><span class="o">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">author</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">releaseDate</span><span class="o">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">releaseDate</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">styles</span><span class="o">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">styles</span>
+</span><span class='line'>    <span class="p">}).</span>
+</span><span class='line'>    <span class="nx">save</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="cm">/* send a 200 code if everything&#39;s ok */</span>
+</span><span class='line'>        <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span>
+</span><span class='line'>            <span class="nx">helpers</span><span class="p">.</span><span class="nx">handleResponse</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The same thing as before when it&rsquo;s about testing the new routes.</p>
+
+<figure class='code'><figcaption><span>/rest/song -X GET</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">[</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="nt">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;542d525dc90c5f4f50642493&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Giant Steps&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="nt">&quot;author&quot;</span><span class="p">:</span> <span class="s2">&quot;John Coltrane&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="nt">&quot;releaseDate&quot;</span><span class="p">:</span> <span class="s2">&quot;January 1960&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="nt">&quot;__v&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+</span><span class='line'>        <span class="nt">&quot;styles&quot;</span><span class="p">:</span> <span class="p">[</span>
+</span><span class='line'>            <span class="s2">&quot;&quot;</span>
+</span><span class='line'>        <span class="p">]</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>    <span class="err">...</span>
+</span><span class='line'><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>/rest/song/542d525dc90c5f4f50642493</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="nt">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;542d525dc90c5f4f50642493&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Giant Steps&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;author&quot;</span><span class="p">:</span> <span class="s2">&quot;John Coltrane&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;releaseDate&quot;</span><span class="p">:</span> <span class="s2">&quot;1970-01-01&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;__v&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;styles&quot;</span><span class="p">:</span> <span class="p">[</span>
+</span><span class='line'>        <span class="s2">&quot;&quot;</span>
+</span><span class='line'>    <span class="p">]</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Front end</h1>
+
+<p>Now that all our back-end part is ready let us deal with the front :) !</p>
+
+<h2>Services</h2>
+
+<p>Create a simple service, which allow us to get resource from the backend.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>yo angular:service libraryService
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We are going to get all resources in order to acces the lbrary resource.</p>
+
+<figure class='code'><figcaption><span>services/libraryService.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> * @ngdoc service</span>
+</span><span class='line'><span class="cm"> * @name frontApp.libraryService</span>
+</span><span class='line'><span class="cm"> * @description</span>
+</span><span class='line'><span class="cm"> * # libraryService</span>
+</span><span class='line'><span class="cm"> * Service in the frontApp.</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;frontAppServices&#39;</span><span class="p">,</span> <span class="p">[])</span>
+</span><span class='line'>  <span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">&#39;libraryService&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$http&#39;</span><span class="p">,</span> <span class="s1">&#39;BASE_URL&#39;</span><span class="p">,</span> <span class="s1">&#39;$q&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$http</span><span class="p">,</span> <span class="nx">BASE_URL</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="p">{</span>
+</span><span class='line'>            <span class="cm">/**</span>
+</span><span class='line'><span class="cm">             * GET -&gt; Get all the libraries</span>
+</span><span class='line'><span class="cm">             * @returns {HttpPromise}</span>
+</span><span class='line'><span class="cm">             */</span>
+</span><span class='line'>            <span class="nx">get</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>                <span class="k">return</span> <span class="nx">$http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">BASE_URL</span> <span class="o">+</span> <span class="s1">&#39;/rest/library&#39;</span><span class="p">);</span>
+</span><span class='line'>            <span class="p">},</span>
+</span><span class='line'>            <span class="cm">/**</span>
+</span><span class='line'><span class="cm">             * GET -&gt; Get one library</span>
+</span><span class='line'><span class="cm">             * @param id</span>
+</span><span class='line'><span class="cm">             * @returns {HttpPromise}</span>
+</span><span class='line'><span class="cm">             */</span>
+</span><span class='line'>            <span class="nx">getById</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">id</span><span class="p">){</span>
+</span><span class='line'>                <span class="k">return</span> <span class="nx">$http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">BASE_URL</span> <span class="o">+</span> <span class="s1">&#39;/rest/library/get/&#39;</span><span class="o">+</span> <span class="nx">id</span><span class="p">);</span>
+</span><span class='line'>            <span class="p">},</span>
+</span><span class='line'>            <span class="cm">/**</span>
+</span><span class='line'><span class="cm">             * POST -&gt; Create a new library</span>
+</span><span class='line'><span class="cm">             * @param libInfos</span>
+</span><span class='line'><span class="cm">             */</span>
+</span><span class='line'>            <span class="nx">createNew</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">libInfos</span><span class="p">){</span>
+</span><span class='line'>               <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">libInfos</span><span class="p">);</span>
+</span><span class='line'>            <span class="p">},</span>
+</span><span class='line'>            <span class="cm">/**</span>
+</span><span class='line'><span class="cm">             * PUT -&gt; Add new song in the current library music array.</span>
+</span><span class='line'><span class="cm">             * @param idLibrary</span>
+</span><span class='line'><span class="cm">             * @param theNewSongArray</span>
+</span><span class='line'><span class="cm">             * @returns {HttpPromise}</span>
+</span><span class='line'><span class="cm">             */</span>
+</span><span class='line'>            <span class="nx">addSong</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">idLibrary</span><span class="p">,</span> <span class="nx">theNewSongArray</span><span class="p">){</span>
+</span><span class='line'>                <span class="k">return</span> <span class="nx">$http</span><span class="p">({</span>
+</span><span class='line'>                    <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;PUT&#39;</span><span class="p">,</span>
+</span><span class='line'>                    <span class="nx">url</span><span class="o">:</span> <span class="nx">BASE_URL</span> <span class="o">+</span> <span class="s1">&#39;/rest/library/update/&#39;</span> <span class="o">+</span> <span class="nx">idLibrary</span><span class="p">,</span>
+</span><span class='line'>                    <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>                        <span class="nx">songs</span><span class="o">:</span><span class="nx">theNewSongArray</span>
+</span><span class='line'>                    <span class="p">}</span>
+</span><span class='line'>                <span class="p">});</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">};</span>
+</span><span class='line'>  <span class="p">}]);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Don&rsquo;t forget to add this module in the main module or angular won&rsquo;t be able to load it.</p>
+
+<figure class='code'><figcaption><span>app.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">angular</span>
+</span><span class='line'>  <span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;frontApp&#39;</span><span class="p">,</span> <span class="p">[</span>
+</span><span class='line'>    <span class="s1">&#39;ngRoute&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s1">&#39;frontAppServices&#39;</span>
+</span><span class='line'>  <span class="p">])</span>
+</span><span class='line'>  <span class="p">.</span><span class="nx">config</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">$routeProvider</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">//...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now i need to call my service in the main controller.</p>
+
+<figure class='code'><figcaption><span>controllers/main.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">libraryService</span><span class="p">.</span><span class="nx">get</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="mi">200</span><span class="p">){</span>
+</span><span class='line'>        <span class="cm">/* access to the data informations */</span>
+</span><span class='line'>        <span class="nx">$scope</span><span class="p">.</span><span class="nx">theLibraries</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now i want to access all music from a single library.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>yo angular:route library
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Use the libraryService in the controller.</p>
+
+<p>For example :</p>
+
+<figure class='code'><figcaption><span>library.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'>    <span class="cm">/* the current library id */</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">libraryId</span> <span class="o">=</span> <span class="nx">$routeParams</span><span class="p">.</span><span class="nx">id</span>
+</span><span class='line'>      <span class="p">,</span> <span class="nx">newSongToAdd</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="cm">/**</span>
+</span><span class='line'><span class="cm">     * Handle $http promise</span>
+</span><span class='line'><span class="cm">     * @param response</span>
+</span><span class='line'><span class="cm">     * @returns {*}</span>
+</span><span class='line'><span class="cm">     */</span>
+</span><span class='line'>    <span class="kd">function</span> <span class="nx">checkForResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="mi">200</span><span class="p">){</span>
+</span><span class='line'>            <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="cm">/**</span>
+</span><span class='line'><span class="cm">     * Add or remove the item from the array</span>
+</span><span class='line'><span class="cm">     * @param item</span>
+</span><span class='line'><span class="cm">     */</span>
+</span><span class='line'>    <span class="kd">function</span> <span class="nx">addToArray</span><span class="p">(</span><span class="nx">item</span><span class="p">){</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">position</span> <span class="o">=</span> <span class="nx">newSongToAdd</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
+</span><span class='line'>        <span class="cm">/* when &gt; -1 mean dat is present */</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="nx">position</span> <span class="o">===</span> <span class="o">-</span><span class="mi">1</span><span class="p">){</span>
+</span><span class='line'>            <span class="nx">newSongToAdd</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span><span class='line'>            <span class="nx">newSongToAdd</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">position</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="cm">/**</span>
+</span><span class='line'><span class="cm">     * add the selected song to the song array.</span>
+</span><span class='line'><span class="cm">     * @param idSong</span>
+</span><span class='line'><span class="cm">     */</span>
+</span><span class='line'>    <span class="nx">$scope</span><span class="p">.</span><span class="nx">addSong</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">idSong</span><span class="p">){</span>
+</span><span class='line'>        <span class="nx">addToArray</span><span class="p">(</span><span class="nx">idSong</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="cm">/**</span>
+</span><span class='line'><span class="cm">     *  Validation the new array and save him in the database.</span>
+</span><span class='line'><span class="cm">     */</span>
+</span><span class='line'>    <span class="nx">$scope</span><span class="p">.</span><span class="nx">validNewSongs</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="cm">/* let&#39;s assume that the array isn&#39;t empty */</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="nx">newSongToAdd</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">){</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="nx">libraryService</span><span class="p">.</span><span class="nx">addSong</span><span class="p">(</span><span class="nx">newSongToAdd</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+</span><span class='line'>                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</span><span class='line'>            <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="cm">/* call to libraryService which retrive all resources */</span>
+</span><span class='line'>    <span class="nx">libraryService</span><span class="p">.</span><span class="nx">getById</span><span class="p">(</span><span class="nx">libraryId</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+</span><span class='line'>        <span class="cm">/* store the library information */</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">informationsLibrary</span> <span class="o">=</span> <span class="nx">checkForResponse</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</span><span class='line'>        <span class="cm">/* display them in the partials */</span>
+</span><span class='line'>        <span class="nx">$scope</span><span class="p">.</span><span class="nx">currentLibrary</span> <span class="o">=</span> <span class="nx">informationsLibrary</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nx">$scope</span><span class="p">.</span><span class="nx">isMusic</span> <span class="o">=</span> <span class="nx">informationsLibrary</span><span class="p">.</span><span class="nx">musics</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="cm">/* call to the songService which retrieve all resources */</span>
+</span><span class='line'>    <span class="nx">songService</span><span class="p">.</span><span class="nx">get</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+</span><span class='line'>        <span class="cm">/* display all song in the partials. */</span>
+</span><span class='line'>        <span class="nx">$scope</span><span class="p">.</span><span class="nx">songs</span> <span class="o">=</span> <span class="nx">checkForResponse</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can now manipulate all resources.</p>
+
+<h1>Conclusion</h1>
+
+<p>In conclusion, we saw how to create a communication between the two layer by following good manners.</p>
+
+<p>Feel free to comments, for any information :)</p>
+
+<p>You can of course, find all the code we seen in <a href="https://github.com/llaine/blog-hackingMean">github</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/10/02/hacking-mean-part1/">Hacking MEAN Get Started With Your Own, Part 1</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-10-02T08:39:51+02:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>8:39 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1>Introduction</h1>
+
+<p>The MEAN term refer to a collection of JavaScript based technologies used to develop web applications.</p>
+
+<p>This article explores the basics of the MEAN stack and show how to create a simple application.</p>
+
+<h2>MEAN.IO vs you own</h2>
+
+<p>There is already a boilerplate of the stack, providing a complete architecture to deal with this kind of application.
+The topic of this article is to show you how to create your own MEAN stack.
+It&rsquo;s not a tutorial about <a href="http://mean.io/">mean.io</a></p>
+
+<h2>Two parts ?</h2>
+
+<p>The first part of this article is a simple introduction, the second part is a concrete example of the stack.</p>
+
+<h1>Technologies</h1>
+
+<ul>
+<li><p><a href="http://nodejs.org/">NodeJS</a> is a server side JavaScript execution environment. It’s a platform built on Google Chrome’s V8 JavaScript runtime. It helps in building highly scalable and concurrent applications rapidly.</p></li>
+<li><p><a href="http://www.mongodb.org/">MongoDB</a> is a schemaless NoSQL database system. MongoDB saves data in binary JSON format which makes it easier to pass data between client and server.</p></li>
+<li><p><a href="http://expressjs.com/">Express</a> is lightweight framework used to build web applications in Node. It provides a number of robust features for building single and multi page web application. Express is inspired by the popular Ruby framework, Sinatra.</p></li>
+<li><p><a href="https://angularjs.org/">AngularJS</a> is a JavaScript framework developed by Google. It provides some awesome features like the two-way data binding. It’s a complete solution for rapid and awesome front end development.</p></li>
+</ul>
+
+
+<h1>Prerequisites</h1>
+
+<p>During all the tutorial i&rsquo;m on Maverick 10.9.5, follow this tutorial on Unix system will be almost similar.
+I use brew to manage the packages.</p>
+
+<h3>MongoDB</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='Bash'><span class='line'><span class="nv">$ </span>brew update
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>brew install mongodb <span class="c"># Install MongoDB</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>mongod <span class="c"># To run the mongodb server</span>
+</span><span class='line'><span class="nv">$ </span>mongo  <span class="c"># To run the mongo cli</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>NodeJS</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>brew install node <span class="c"># Install NodeJS</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>NPM packages.</h2>
+
+<p>NodeJS come with his own package manager called <code>npm</code>.
+This package will be helpful to install the modules we need.
+Let&rsquo;s see how to install them.</p>
+
+<p>I use the <code>--save</code> argument in order to add this module in the <code>package.json</code> file, which describe the configuration of our application.</p>
+
+<h3>Express</h3>
+
+<p>The web framework.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>npm install --save express
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Mongoose</h3>
+
+<p>Mongoose provides a straight-forward, schema-based solution to modeling your application data and includes built-in type casting, validation, query building, business logic hooks and more, out of the box with NodeJS.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>npm install --save mongoose
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Yeoman</h3>
+
+<p>Yeoman is a generator in order to scaffold a robust and productive base for your project.
+There are a lots of generator. We are going to use the <a href="https://github.com/yeoman/generator-angular">angular</a>
+ one.</p>
+
+<p>It will be very convenient and usefull to start our front-end part.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>npm install -g --save generator-angular
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>npm will fetch all the modules and install them.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>npm init
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This utility will walk you through creating a package.json file.
+Enter your information, and then let generate the file.</p>
+
+<h1>Directory structure</h1>
+
+<p>You can create your own, i suggest a simple application tree, reusable and flexible.</p>
+
+<figure class='code'><figcaption><span>the directory structure</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ls
+</span><span class='line'>  back/
+</span><span class='line'>  front/
+</span><span class='line'>  node_modules/
+</span><span class='line'>  package.json
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Back end part</h1>
+
+<h3>Server</h3>
+
+<p>We are going to create our server.</p>
+
+<figure class='code'><figcaption><span>back/server.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">,</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">){</span>
+</span><span class='line'>        <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;Hello World ! &#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">8081</span><span class="p">);</span>
+</span><span class='line'><span class="p">})();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We have here a simple express instance that listens on 8081 port and sends a string when the route is called.</p>
+
+<p>Launch the node instance with <code>node server.js</code> and fetch the route.</p>
+
+<p><img src="/images/curl_localhost.png" title="" ></p>
+
+<p>Ok that&rsquo;s cool, we now have our server.
+Let&rsquo;s organize us by creating folders.</p>
+
+<ul>
+<li><strong>models</strong> : This folder will be dedicated to our MongoDb Schema.</li>
+<li><strong>routes</strong> : this folder will contains all the controller corresponding to routes.</li>
+</ul>
+
+
+<figure class='code'><figcaption><span>mean/back/</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>.
+</span><span class='line'>├── server.js
+</span><span class='line'>├── models
+</span><span class='line'>└── routes
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Routing</h3>
+
+<p>Let&rsquo;s first create a route by creating a simple file.</p>
+
+<figure class='code'><figcaption><span>routes/index.js </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// The express module</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">,</span> <span class="nx">router</span> <span class="o">=</span> <span class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span class="p">();</span> <span class="c1">// Routing service of express </span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">//Our default route </span>
+</span><span class='line'>    <span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&quot;Hello World from router ! &quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">router</span><span class="p">;</span>
+</span><span class='line'><span class="p">})();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We shift all the routing logic in a dedicated controller.
+This will be more scalable, testable and organized.</p>
+
+<p>We will no use this route in the <code>server.js</code> file.</p>
+
+<figure class='code'><figcaption><span>back/server.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">,</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">()</span>
+</span><span class='line'>      <span class="p">,</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./routes/index&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/rest&#39;</span><span class="p">,</span> <span class="nx">index</span><span class="p">);</span>
+</span><span class='line'>    <span class="c1">// etc</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>app.user</code> indicate to express that all route which begin with <code>/rest</code> will be redirected to routes which are in the <code>routes/index.js</code> file.</p>
+
+<p><img src="/images/curl_from_router.png" title="" ></p>
+
+<h3>Helpers</h3>
+
+<p>You notice, that each time we made a modification to any <strong>NodeJS</strong> file, we must rerun the server, which is not very handy.</p>
+
+<p>Fortunatly a npm package, called <code>nodemon</code> is here to assure hot reload code for NodeJS files.</p>
+
+<figure class='code'><figcaption><span>install nodemon</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>npm install -g nodemon <span class="c"># Install the package</span>
+</span><span class='line'><span class="nv">$ </span>nodemon server.js <span class="c"># Run the server</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="/images/nodemon.png" title="" ></p>
+
+<p>Another intersting feature would be the ability to have a log feature, that will simply display an output into the node.js console each time a route has been called.</p>
+
+<figure class='code'><figcaption><span>server.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// The logging function</span>
+</span><span class='line'><span class="kd">function</span> <span class="nx">log_node</span><span class="p">(</span><span class="nx">callback</span><span class="p">){</span>
+</span><span class='line'>    <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">toDateString</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot; : &quot;</span> <span class="o">+</span> <span class="nx">req</span><span class="p">.</span><span class="nx">method</span> <span class="o">+</span> <span class="s2">&quot; =&gt; &quot;</span> <span class="o">+</span> <span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+</span><span class='line'>        <span class="nx">callback</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Apply the function to the use method.</p>
+
+<figure class='code'><figcaption><span>server.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Change the line and add the function</span>
+</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="nx">log_node</span><span class="p">(</span><span class="nx">index</span><span class="p">));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Query the route and you will see an output in the console !</p>
+
+<p>This function, is very simple and you can obviously create a specific module, with some filter for particular route, colors, etc.</p>
+
+<h2>Mongoose + NodeJS</h2>
+
+<p>Now that we isolate the business layer, it&rsquo;s time to use the persistence layer.
+I present you earlier <strong>mongoose</strong> which provides a straight-forward, schema-based solution to modeling your application data and includes built-in type casting, validation, query building, business logic hooks and more, out of the box.</p>
+
+<figure class='code'><figcaption><span>example of use</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">mongoose</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mongoose&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">mongoose</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="s1">&#39;mongodb://localhost/test&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">Cat</span> <span class="o">=</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">model</span><span class="p">(</span><span class="s1">&#39;Cat&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="nb">String</span> <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">kitty</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Cat</span><span class="p">({</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Zildjian&#39;</span> <span class="p">});</span>
+</span><span class='line'><span class="nx">kitty</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="c1">// ...</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;meow&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To start with mongoose, let&rsquo;s create first a configuration file in a folder called <strong>conf</strong>.</p>
+
+<figure class='code'><figcaption><span>back/conf/general.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">exports</span><span class="p">.</span><span class="nx">mongodb</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">host</span><span class="o">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">db</span><span class="o">:</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">opt</span><span class="o">:</span> <span class="p">{}</span>
+</span><span class='line'>    <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">exports</span><span class="p">;</span>
+</span><span class='line'><span class="p">})();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Add the configuration file to the server.</p>
+
+<figure class='code'><figcaption><span>server.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">(),</span>
+</span><span class='line'><span class="nx">conf</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./conf/general&#39;</span><span class="p">),</span> <span class="c1">// Our configuration</span>
+</span><span class='line'><span class="nx">mongoose</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mongoose&#39;</span><span class="p">);</span>  <span class="c1">// Mongoose library</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// ...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now create some connection function, in order to connect to mongo.</p>
+
+<figure class='code'><figcaption><span>server.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Connection</span>
+</span><span class='line'><span class="nx">mongoose</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="s1">&#39;mongodb://&#39;</span><span class="o">+</span> <span class="nx">conf</span><span class="p">.</span><span class="nx">mongodb</span><span class="p">.</span><span class="nx">host</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="nx">conf</span><span class="p">.</span><span class="nx">mongodb</span><span class="p">.</span><span class="nx">db</span><span class="p">,</span> <span class="nx">conf</span><span class="p">.</span><span class="nx">mongodb</span><span class="p">.</span><span class="nx">opt</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Assign event to the MongoDB instance.</span>
+</span><span class='line'><span class="nx">mongoose</span><span class="p">.</span><span class="nx">connection</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;open&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ref</span><span class="p">){</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;connection to mongo server &quot;</span> <span class="o">+</span> <span class="nx">conf</span><span class="p">.</span><span class="nx">mongodb</span><span class="p">.</span><span class="nx">host</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">mongoose</span><span class="p">.</span><span class="nx">connection</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">mongoose</span><span class="p">.</span><span class="nx">connection</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;disconnected&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Disconnected&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Cool we can now connect our application to the database.</p>
+
+<p><strong>Remeber</strong> to start the MongoDb server with <code>mongod</code> before, launching the server or a beautiful error will show up ;) !</p>
+
+<h2>Data models</h2>
+
+<p>Data in MongoDB has a flexible schema. Collections do not enforce document structure. This flexibility gives you data-modeling choices to match your application and its performance requirements.</p>
+
+<p>In mongoDB, the data models are representend by Schema (which are simply JSON object).</p>
+
+<p><a href="http://docs.mongodb.org/manual/data-modeling/">More about MongoDb&rsquo;s data modeling</a></p>
+
+<p>Mongoose, allow us to easily design our pattern of data.
+Create one called fooBar</p>
+
+<figure class='code'><figcaption><span>models/fooBar.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">mongoose</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mongoose&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">,</span> <span class="nx">Schema</span> <span class="o">=</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm">* fooBar model. </span>
+</span><span class='line'><span class="cm">* name : String</span>
+</span><span class='line'><span class="cm">* type : String </span>
+</span><span class='line'><span class="cm">* toString() : String  </span>
+</span><span class='line'><span class="cm">* </span>
+</span><span class='line'><span class="cm">* A really nice model. </span>
+</span><span class='line'><span class="cm">*/</span>
+</span><span class='line'><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">exports</span><span class="p">.</span><span class="nx">schema</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Schema</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">name</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">type</span><span class="o">:</span> <span class="nb">String</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">exports</span><span class="p">.</span><span class="nx">schema</span><span class="p">.</span><span class="nx">statics</span><span class="p">.</span><span class="nx">toString</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="k">return</span> <span class="s2">&quot;Hello i&#39;m &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot; a  &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">type</span> <span class="o">+</span> <span class="s2">&quot; schema ! &quot;</span><span class="p">;</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Very important, in order to compile the mongoose&#39;s schema definition.</span>
+</span><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">model</span><span class="p">(</span><span class="s1">&#39;fooBar&#39;</span><span class="p">,</span> <span class="nx">exports</span><span class="p">.</span><span class="nx">schema</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Let&rsquo;s use this schema in our controller.</p>
+
+<figure class='code'><figcaption><span>routes/index.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">fooBar</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../models/fooBar&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">...</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/fooBar&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">){</span>
+</span><span class='line'>    <span class="k">new</span> <span class="nx">fooBar</span><span class="p">({</span>
+</span><span class='line'>        <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Louis&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;JavaScript loverz&quot;</span>
+</span><span class='line'>    <span class="p">}).</span><span class="nx">save</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+</span><span class='line'>        <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&quot; It&#39;s in the databases now ! &quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I should have normaly use a POST method, in order to persist the new document, but for the purpose of the example, i use a GET.</p>
+
+<p><img src="/images/fooBarnew.png" title="" ></p>
+
+<p>Open a new terminal and go the mongo cli to verify that our model has beed saved.</p>
+
+<p><img src="/images/mongoConsole.png" title="" ></p>
+
+<p>Cool, isn&rsquo;t it ? :)</p>
+
+<h1>Front-end part.</h1>
+
+<p>It&rsquo;s not an obligation to use that tool, and you can grab all the angular component by hand and generate your own directory structure.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span><span class="nb">cd </span>front <span class="o">&amp;&amp;</span> yo angular
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>This command will, create the basic architecture of the angular application.</p>
+
+<p>There are small questions in order to choose usefull library as <em>angular-route</em> or <em>angular-animate</em>.</p>
+
+<p>Select <strong>angular-route</strong>.</p>
+
+<p>Yeoman will fetch and install all the library you need with <em>npm install</em> and <em>bower install</em>.</p>
+
+<figure class='code'><figcaption><span>the generated directory structure</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>.
+</span><span class='line'>├── Gruntfile.js
+</span><span class='line'>├── app/
+</span><span class='line'>│   ├── 404.html
+</span><span class='line'>│   ├── favicon.ico
+</span><span class='line'>│   ├── images/
+</span><span class='line'>│   │   └── yeoman.png
+</span><span class='line'>│   ├── index.html
+</span><span class='line'>│   ├── robots.txt
+</span><span class='line'>│   ├── scripts/
+</span><span class='line'>│   │   ├── app.js
+</span><span class='line'>│   │   ├── controllers
+</span><span class='line'>│   │   │   ├── about.js
+</span><span class='line'>│   │   │   ├── main.js
+</span><span class='line'>│   ├── styles/
+</span><span class='line'>│   │   └── main.css
+</span><span class='line'>│   └── views/
+</span><span class='line'>│       ├── about.html
+</span><span class='line'>│       ├── main.html
+</span><span class='line'>├── bower.json
+</span><span class='line'>├── bower_components/ <span class="c"># Bower library</span>
+</span><span class='line'>└── node_modules/ <span class="c"># Node library use for grunt</span>
+</span><span class='line'>├── package.json
+</span><span class='line'>└── <span class="nb">test</span>/ <span class="c"># Karma test folder </span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The angular-generator comes with a task manager called <a href="http://gruntjs.com/">Grunt</a>  and a package manager called <a href="http://bower.io/">Bower</a>.</p>
+
+<ul>
+<li><strong>Grunt</strong> will be very usefull to launch task as minification, test or hot-reload.</li>
+<li><strong>Bower</strong> will be used to fetch and install packages from all over, taking care of hunting, finding, downloading, and saving the stuff you’re looking for. Bower keeps track of these packages in a manifest file, bower.json.</li>
+</ul>
+
+
+<h2>Begin with yeoman</h2>
+
+<h3>Create a simple route</h3>
+
+<p>Yeoman as a good generator, will allow us to save time and will create very quickly all file required.</p>
+
+<p>For example let create our first route.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>yo angular:route foo
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Yeoman going to automaticaly add a route in <code>app.js</code></p>
+
+<figure class='code'><figcaption><span>app.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">.</span><span class="nx">when</span><span class="p">(</span><span class="s1">&#39;/foo&#39;</span><span class="p">,</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">templateUrl</span><span class="o">:</span> <span class="s1">&#39;views/foo.html&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">controller</span><span class="o">:</span> <span class="s1">&#39;FooCtrl&#39;</span>
+</span><span class='line'><span class="p">})</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To access the page, we have two solutions.</p>
+
+<ul>
+<li>Access the front folder, with a Apache or NGiNX server.</li>
+<li>Use the grunt task <code>server</code> in order to emulate a server.</li>
+</ul>
+
+
+<p>It will function similar to an Apache server, serving up static files based on their path, but uses the http module via connect to set it up.</p>
+
+<p>In addition to run the server, this task will passing all Karma test, activate hot-reload by watching file for modification.</p>
+
+<p>All the task are register in the <strong>Gruntfile.js</strong> file.</p>
+
+<figure class='code'><figcaption><span>front/</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>grunt serve
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Browse the <code>http://localhost:9000/#/foo</code> et voila ! :)</p>
+
+<p>Go to the part <a href="/blog/2014/10/02/hacking-mean-part2/">two</a>.</p>
+
+<p>For any questions or additional information, please feel free to comment !</p>
+
+<h1>Troubleshooting</h1>
+
+<h2>Fatal error: Unable to find local grunt. (Front)</h2>
+
+<p>Grunt does not install correctly.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo npm install grunt --save-dev
+</span><span class='line'><span class="nv">$ </span>npm install
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>ERROR: dbpath (/data/db) does not exist. (Mongod)</h2>
+
+<p>MongoDb need a path to store all the data.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo mongod --dbpath<span class="o">=</span>/path/to/your/data/folder
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/10/19/es6/">ECMAScript 6 Overview</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/10/12/websocket/">Introduction to webSockets With NodeJS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/10/02/hacking-mean-part2/">Hacking MEAN Get Started With Your Own, Part 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/10/02/hacking-mean-part1/">Hacking MEAN Get Started With Your Own, Part 1</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/llaine">@llaine</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'llaine',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Lainé Louis -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'llaine-github-io';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,1043 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Nosql | Lainé Louis]]></title>
+  <link href="https://llaine.github.io//blog/categories/nosql/atom.xml" rel="self"/>
+  <link href="https://llaine.github.io//"/>
+  <updated>2014-10-19T16:57:45+02:00</updated>
+  <id>https://llaine.github.io//</id>
+  <author>
+    <name><![CDATA[Lainé Louis]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Hacking MEAN Get Started With Your Own, Part 2]]></title>
+    <link href="https://llaine.github.io//blog/2014/10/02/hacking-mean-part2/"/>
+    <updated>2014-10-02T08:51:35+02:00</updated>
+    <id>https://llaine.github.io//blog/2014/10/02/hacking-mean-part2</id>
+    <content type="html"><![CDATA[<p>Now that we have both part operationnal, let&rsquo;s create a simple application.</p>
+
+<p>I&rsquo;m a music lover, so why don&rsquo;t create a simple music library. :)</p>
+
+<h1>Models</h1>
+
+<pre><code class="javascript song.js">var mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
+/**
+* The song model 
+* @name : String, the name
+* @author: String the author
+* @releaseDate : String, the release date of the song 
+* @styles: Array of string, represent all the style a song may have. 
+*/
+
+'use strict';
+
+exports.schema = new Schema({
+    name: String,
+    author: String,
+    releaseDate: String,
+    styles: [String]
+});
+
+module.exports =  mongoose.model('music', exports.schema);
+</code></pre>
+
+<pre><code class="javascript library.js">var mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
+/**
+* The library model 
+* @name : String, the name
+* @creationDate : Date.now
+* @releaseDate : String, the release date of the song 
+* @styles: Array of string, represent all the style a song may have. 
+*/
+'use strict';
+
+exports.schema = new Schema({
+    name: String,
+    creationDate: { type: Date, default: Date.now },
+    music: [Schema.Types.ObjectId]
+});
+
+model.exports = mongoose.model('library', exports.schema);
+</code></pre>
+
+<p>We will create a simple CRUD for the library and for the song.</p>
+
+<h1>Back end</h1>
+
+<h2>Library models</h2>
+
+<p>What we are going to create, is a RESTFul API.
+Using express and mongoose functions to save/find and send our datas.</p>
+
+<p>I create CRUD functions, which are going to be called by my REST Service</p>
+
+<p>For the application, i create a simple helpers, which is going to help us handle the mongoDb response.</p>
+
+<pre><code class="javascript helpers/utils.js">// ...
+/**
+ * Handle a MongoDb response
+ * @param err
+ * @param r
+ * @returns {*}
+ */
+helper.handleResponse = function(err, r){
+    try {
+        if(err) throw err;
+    } catch(e){
+        helper.log(e.message);
+    }
+    return r;
+};
+</code></pre>
+
+<p>Then in my library service.
+<figure class='code'><figcaption><span>libraryService.js</p></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span> <span class="err">/&lt;em&gt;*</span>
+</span><span class='line'> <span class="o">*</span> <span class="nx">GET</span> <span class="o">-&gt;</span> <span class="err">/rest/library/</span>
+</span><span class='line'> <span class="o">&lt;</span><span class="sr">/em&gt;/</span>
+</span><span class='line'><span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="err">/&amp;rsquo;, function(req, res) {&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="cm">/* find all document in the library collection */</span>
+</span><span class='line'><span class="nx">libraryRepo</span><span class="p">.</span><span class="nx">find</span><span class="p">().</span><span class="nx">exec</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">r</span><span class="p">){</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="cm">/* handle response */</span>
+</span><span class='line'>    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span>
+</span><span class='line'>        <span class="nx">helpers</span><span class="p">.</span><span class="nx">handleResponse</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">});</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">/&lt;em&gt;*</span>
+</span><span class='line'> <span class="o">*</span> <span class="nx">GET</span> <span class="o">-&gt;</span> <span class="err">/rest/library/:id</span>
+</span><span class='line'> <span class="o">&lt;</span><span class="sr">/em&gt;/</span>
+</span><span class='line'><span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="err">/:id&amp;rsquo;, function(req, res){&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="cm">/* _id ObjectId type. */</span>
+</span><span class='line'><span class="nx">libraryRepo</span><span class="p">.</span><span class="nx">findOne</span><span class="p">(</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="nx">_id</span><span class="o">:</span> <span class="k">new</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">).</span><span class="nx">exec</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">r</span><span class="p">){</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="cm">/* handle response */</span>
+</span><span class='line'>    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span>
+</span><span class='line'>        <span class="nx">helpers</span><span class="p">.</span><span class="nx">handleResponse</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">});</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">/&lt;em&gt;*</span>
+</span><span class='line'> <span class="o">*</span> <span class="nx">POST</span> <span class="o">-&gt;</span> <span class="err">/rest/library</span>
+</span><span class='line'> <span class="o">&lt;</span><span class="sr">/em&gt;/</span>
+</span><span class='line'><span class="nx">router</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="err">/&amp;rsquo;, function(req, res){&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="cm">/* create a new library document */</span>
+</span><span class='line'><span class="k">new</span> <span class="nx">libraryRepo</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">name</span><span class="o">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">music</span><span class="o">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">songs</span>
+</span><span class='line'><span class="p">})</span>
+</span><span class='line'><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="cm">/* send a 200 if everything ok ! */</span>
+</span><span class='line'>    <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span>
+</span><span class='line'>        <span class="nx">helpers</span><span class="p">.</span><span class="nx">handleResponse</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">).</span><span class="nx">end</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">});</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span>
+</span><span class='line'><span class="nx">Mongoose</span> <span class="nx">is</span> <span class="nx">very</span> <span class="nx">functional</span> <span class="nx">and</span> <span class="nx">uses</span> <span class="nx">the</span> <span class="nx">same</span> <span class="nx">query</span> <span class="nx">language</span> <span class="nx">as</span> <span class="nx">the</span> <span class="nx">MongoDb</span> <span class="nx">console</span><span class="p">.</span> <span class="nx">Very</span> <span class="nx">helpful</span> <span class="nx">to</span> <span class="nx">train</span><span class="p">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">I</span> <span class="nx">also</span> <span class="nx">use</span> <span class="err">`</span><span class="nx">exec</span><span class="p">()</span><span class="err">`</span> <span class="k">in</span> <span class="nx">all</span> <span class="nx">my</span> <span class="nx">mongo</span> <span class="nx">call</span><span class="p">.</span>
+</span><span class='line'><span class="nx">This</span> <span class="kd">function</span><span class="p">,</span> <span class="nx">allow</span> <span class="nx">you</span> <span class="nx">to</span> <span class="nx">chain</span> <span class="nx">database</span> <span class="nx">queries</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">them</span> <span class="nx">at</span> <span class="nx">the</span> <span class="nx">end</span> <span class="kd">with</span> <span class="nx">all</span> <span class="nx">the</span> <span class="nx">predicate</span> <span class="nx">you</span> <span class="nx">selected</span><span class="p">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">[</span><span class="nx">Mongoose</span> <span class="nx">Query</span> <span class="nx">Language</span><span class="p">](</span><span class="nx">http</span><span class="o">:</span><span class="c1">//mongoosejs.com/docs/populate.html)</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">You</span> <span class="nx">also</span> <span class="nx">notice</span> <span class="nx">that</span> <span class="nx">i</span> <span class="nx">used</span> <span class="nx">__ObjectId__</span> <span class="nx">to</span> <span class="nx">find</span> <span class="nx">by</span> <span class="nx">id</span><span class="p">.</span>
+</span><span class='line'><span class="nx">ObjectId</span> <span class="nx">is</span> <span class="nx">a</span> <span class="mi">12</span><span class="o">-</span><span class="kr">byte</span> <span class="nx">BSON</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">constructed</span> <span class="nx">using</span><span class="o">:</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">-</span> <span class="nx">a</span> <span class="mi">4</span><span class="o">-</span><span class="kr">byte</span> <span class="nx">value</span> <span class="nx">representing</span> <span class="nx">the</span> <span class="nx">seconds</span> <span class="nx">since</span> <span class="nx">the</span> <span class="nx">Unix</span> <span class="nx">epoch</span><span class="p">,</span>
+</span><span class='line'><span class="o">-</span> <span class="nx">a</span> <span class="mi">3</span><span class="o">-</span><span class="kr">byte</span> <span class="nx">machine</span> <span class="nx">identifier</span><span class="p">,</span>
+</span><span class='line'><span class="o">-</span> <span class="nx">a</span> <span class="mi">2</span><span class="o">-</span><span class="kr">byte</span> <span class="nx">process</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">and</span>
+</span><span class='line'><span class="o">-</span> <span class="nx">a</span> <span class="mi">3</span><span class="o">-</span><span class="kr">byte</span> <span class="nx">counter</span><span class="p">,</span> <span class="nx">starting</span> <span class="kd">with</span> <span class="nx">a</span> <span class="nx">random</span> <span class="nx">value</span><span class="p">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">In</span> <span class="nx">MongoDB</span><span class="p">,</span> <span class="nx">documents</span> <span class="nx">stored</span> <span class="k">in</span> <span class="nx">a</span> <span class="nx">collection</span> <span class="nx">require</span> <span class="nx">a</span> <span class="nx">unique</span> <span class="nx">_id</span> <span class="nx">field</span> <span class="nx">that</span> <span class="nx">acts</span> <span class="nx">as</span> <span class="nx">a</span> <span class="nx">primary</span> <span class="nx">key</span><span class="p">.</span> <span class="nx">Because</span> <span class="nx">ObjectIds</span> <span class="nx">are</span> <span class="nx">small</span><span class="p">,</span> <span class="nx">most</span> <span class="nx">likely</span> <span class="nx">unique</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">fast</span> <span class="nx">to</span> <span class="nx">generate</span><span class="p">,</span> <span class="nx">MongoDB</span> <span class="nx">uses</span> <span class="nx">ObjectIds</span> <span class="nx">as</span> <span class="nx">the</span> <span class="k">default</span> <span class="nx">value</span> <span class="k">for</span> <span class="nx">the</span> <span class="nx">_id</span> <span class="nx">field</span> <span class="k">if</span> <span class="nx">the</span> <span class="nx">_id</span> <span class="nx">field</span> <span class="nx">is</span> <span class="nx">not</span> <span class="nx">specified</span><span class="p">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">###</span> <span class="nx">Testing</span> <span class="nx">the</span> <span class="nx">API</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">To</span> <span class="nx">test</span> <span class="nx">the</span> <span class="nx">service</span><span class="p">,</span> <span class="nx">i</span> <span class="nx">used</span> <span class="p">[</span><span class="nx">PostMAN</span><span class="p">](</span><span class="nx">https</span><span class="o">:</span><span class="c1">//chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm)</span>
+</span><span class='line'><span class="nx">which</span> <span class="nx">is</span> <span class="nx">REST</span> <span class="nx">client</span> <span class="k">for</span> <span class="nx">testing</span> <span class="nx">API</span><span class="p">.</span>
+</span><span class='line'><span class="nx">You</span> <span class="nx">can</span> <span class="nx">use</span> <span class="nx">old</span> <span class="nx">good</span> <span class="err">`</span><span class="nx">curl</span> <span class="o">-</span><span class="nx">X</span> <span class="nx">POST</span><span class="err">`</span><span class="p">,</span> <span class="nx">but</span> <span class="nx">Postman</span> <span class="nx">is</span> <span class="nx">very</span> <span class="nx">usefull</span><span class="p">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">So</span> <span class="nx">after</span> <span class="nx">populating</span> <span class="nx">my</span> <span class="nx">database</span> <span class="kd">with</span> <span class="nx">some</span> <span class="nx">documents</span><span class="p">,</span> <span class="nx">i</span> <span class="nx">could</span> <span class="nx">get</span> <span class="nx">all</span> <span class="nx">resources</span><span class="p">..</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">[</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">_id</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;</span><span class="o">:</span> <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="mi">542</span><span class="nx">d37f66e2a40ee33bd6491</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;,</span>
+</span><span class='line'>        <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">name</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;</span><span class="o">:</span> <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">test</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;,</span>
+</span><span class='line'>        <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">__v</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+</span><span class='line'>        <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">music</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;</span><span class="o">:</span> <span class="p">[],</span>
+</span><span class='line'>        <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">creationDate</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;</span><span class="o">:</span> <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="mi">2014</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">02</span><span class="nx">T11</span><span class="o">:</span><span class="mi">33</span><span class="o">:</span><span class="mf">10.501</span><span class="nx">Z</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>    <span class="o">&amp;</span><span class="nx">hellip</span><span class="p">;</span>
+</span><span class='line'><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>I can also easily access to a particular resource.</p>
+
+<pre><code class="json /rest/library/542d37e3856d759d33ba3d40">{
+    "_id": "542d37e3856d759d33ba3d40",
+    "name": "test",
+    "__v": 0,
+    "music": [],
+    "creationDate": "2014-10-02T11:32:51.985Z"
+}
+</code></pre>
+
+<h2>Song models</h2>
+
+<p>Pretty much the same logic here.</p>
+
+<pre><code class="javascript songService.js">/**
+ * GET -&gt; /rest/song/
+ */
+router.get('/', function(req, res){
+
+    /* fetch all the song */
+    songRepo.find().exec(function(err, r){
+
+        /* handle response */
+        res.send(
+            helpers.handleResponse(err, r)
+        );
+
+    });
+
+});
+
+/**
+ * GET -&gt; /rest/song/:id
+ */
+router.get('/:id', function(req, res){
+
+    /* _id ObjectId type. */
+    songRepo.findOne(
+        {
+            _id: new mongoose.Types.ObjectId(req.params.id)
+        }
+    ).exec(function(err, r){
+
+        /* handle response */
+        res.send(
+            helpers.handleResponse(err, r)
+        );
+
+    });
+
+});
+
+/**
+ * POST -&gt; /rest/song
+ * Create a new song.
+ */
+router.post('/', function(req, res){
+    /* create a document from the POST params */
+    new songRepo({
+        name: req.body.name,
+        author: req.body.author,
+        releaseDate: req.body.releaseDate,
+        styles: req.body.styles
+    }).
+    save(function(err){
+
+        /* send a 200 code if everything's ok */
+        res.send(
+            helpers.handleResponse(err, 200)
+        );
+
+    });
+
+});
+</code></pre>
+
+<p>The same thing as before when it&rsquo;s about testing the new routes.
+<code>json /rest/song -X GET
+[
+    {
+        "_id": "542d525dc90c5f4f50642493",
+        "name": "Giant Steps",
+        "author": "John Coltrane",
+        "releaseDate": "January 1960",
+        "__v": 0,
+        "styles": [
+            ""
+        ]
+    },
+    ...
+]
+</code></p>
+
+<pre><code class="json /rest/song/542d525dc90c5f4f50642493">{
+    "_id": "542d525dc90c5f4f50642493",
+    "name": "Giant Steps",
+    "author": "John Coltrane",
+    "releaseDate": "1970-01-01",
+    "__v": 0,
+    "styles": [
+        ""
+    ]
+}
+</code></pre>
+
+<h1>Front end</h1>
+
+<p>Now that all our back-end part is ready let us deal with the front :) !</p>
+
+<h2>Services</h2>
+
+<p>Create a simple service, which allow us to get resource from the backend.</p>
+
+<pre><code class="bash ">$ yo angular:service libraryService
+</code></pre>
+
+<p>We are going to get all resources in order to acces the lbrary resource.</p>
+
+<pre><code class="javascript  services/libraryService.js">/**
+ * @ngdoc service
+ * @name frontApp.libraryService
+ * @description
+ * # libraryService
+ * Service in the frontApp.
+ */
+angular.module('frontAppServices', [])
+  .factory('libraryService', ['$http', 'BASE_URL', '$q', function($http, BASE_URL) {
+
+        return {
+            /**
+             * GET -&gt; Get all the libraries
+             * @returns {HttpPromise}
+             */
+            get: function(){
+                return $http.get(BASE_URL + '/rest/library');
+            },
+            /**
+             * GET -&gt; Get one library
+             * @param id
+             * @returns {HttpPromise}
+             */
+            getById: function(id){
+                return $http.get(BASE_URL + '/rest/library/get/'+ id);
+            },
+            /**
+             * POST -&gt; Create a new library
+             * @param libInfos
+             */
+            createNew: function(libInfos){
+               console.log(libInfos);
+            },
+            /**
+             * PUT -&gt; Add new song in the current library music array.
+             * @param idLibrary
+             * @param theNewSongArray
+             * @returns {HttpPromise}
+             */
+            addSong: function(idLibrary, theNewSongArray){
+                return $http({
+                    method: 'PUT',
+                    url: BASE_URL + '/rest/library/update/' + idLibrary,
+                    data: {
+                        songs:theNewSongArray
+                    }
+                });
+            }
+
+        };
+  }]);
+</code></pre>
+
+<p>Don&rsquo;t forget to add this module in the main module or angular won&rsquo;t be able to load it.</p>
+
+<pre><code class="javascript app.js">angular
+  .module('frontApp', [
+    'ngRoute',
+    'frontAppServices'
+  ])
+  .config(function ($routeProvider) {
+  //...
+</code></pre>
+
+<p>Now i need to call my service in the main controller.</p>
+
+<pre><code class="javascript controllers/main.js">libraryService.get().then(function(data){
+
+    if(data.status === 200){
+        /* access to the data informations */
+        $scope.theLibraries = data.data;
+    }
+});
+</code></pre>
+
+<p>Now i want to access all music from a single library.</p>
+
+<pre><code class="bash ">$ yo angular:route library
+</code></pre>
+
+<p>Use the libraryService in the controller.</p>
+
+<p>For example :</p>
+
+<pre><code class="javascript library.js">
+
+    /* the current library id */
+    var libraryId = $routeParams.id
+      , newSongToAdd = [];
+
+    /**
+     * Handle $http promise
+     * @param response
+     * @returns {*}
+     */
+    function checkForResponse(response){
+        if(response.status === 200){
+            return response.data;
+        }
+    }
+
+    /**
+     * Add or remove the item from the array
+     * @param item
+     */
+    function addToArray(item){
+        var position = newSongToAdd.indexOf(item);
+        /* when &gt; -1 mean dat is present */
+        if(position === -1){
+            newSongToAdd.push(item);
+        }else{
+            newSongToAdd.splice(position, 1);
+        }
+    }
+
+    /**
+     * add the selected song to the song array.
+     * @param idSong
+     */
+    $scope.addSong = function(idSong){
+        addToArray(idSong);
+    };
+
+    /**
+     *  Validation the new array and save him in the database.
+     */
+    $scope.validNewSongs = function(){
+        /* let's assume that the array isn't empty */
+        if(newSongToAdd.length &gt; 0){
+
+            libraryService.addSong(newSongToAdd).then(function(data){
+                console.log(data);
+            });
+
+        }
+    };
+
+    /* call to libraryService which retrive all resources */
+    libraryService.getById(libraryId).then(function(data){
+        /* store the library information */
+        var informationsLibrary = checkForResponse(data);
+        /* display them in the partials */
+        $scope.currentLibrary = informationsLibrary;
+
+        $scope.isMusic = informationsLibrary.musics === undefined;
+
+    });
+
+    /* call to the songService which retrieve all resources */
+    songService.get().then(function(data){
+        /* display all song in the partials. */
+        $scope.songs = checkForResponse(data);
+
+    });
+</code></pre>
+
+<p>You can now manipulate all resources.</p>
+
+<h1>Conclusion</h1>
+
+<p>In conclusion, we saw how to create a communication between the two layer by following good manners.</p>
+
+<p>Feel free to comments, for any information :)</p>
+
+<p>You can of course, find all the code we seen in <a href="https://github.com/llaine/blog-hackingMean">github</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hacking MEAN Get Started With Your Own, Part 1]]></title>
+    <link href="https://llaine.github.io//blog/2014/10/02/hacking-mean-part1/"/>
+    <updated>2014-10-02T08:39:51+02:00</updated>
+    <id>https://llaine.github.io//blog/2014/10/02/hacking-mean-part1</id>
+    <content type="html"><![CDATA[<h1>Introduction</h1>
+
+<p>The MEAN term refer to a collection of JavaScript based technologies used to develop web applications.</p>
+
+<p>This article explores the basics of the MEAN stack and show how to create a simple application.</p>
+
+<h2>MEAN.IO vs you own</h2>
+
+<p>There is already a boilerplate of the stack, providing a complete architecture to deal with this kind of application.
+The topic of this article is to show you how to create your own MEAN stack.
+It&rsquo;s not a tutorial about <a href="http://mean.io/">mean.io</a></p>
+
+<h2>Two parts ?</h2>
+
+<p>The first part of this article is a simple introduction, the second part is a concrete example of the stack.</p>
+
+<h1>Technologies</h1>
+
+<ul>
+<li><p><a href="http://nodejs.org/">NodeJS</a> is a server side JavaScript execution environment. It’s a platform built on Google Chrome’s V8 JavaScript runtime. It helps in building highly scalable and concurrent applications rapidly.</p></li>
+<li><p><a href="http://www.mongodb.org/">MongoDB</a> is a schemaless NoSQL database system. MongoDB saves data in binary JSON format which makes it easier to pass data between client and server.</p></li>
+<li><p><a href="http://expressjs.com/">Express</a> is lightweight framework used to build web applications in Node. It provides a number of robust features for building single and multi page web application. Express is inspired by the popular Ruby framework, Sinatra.</p></li>
+<li><p><a href="https://angularjs.org/">AngularJS</a> is a JavaScript framework developed by Google. It provides some awesome features like the two-way data binding. It’s a complete solution for rapid and awesome front end development.</p></li>
+</ul>
+
+
+<h1>Prerequisites</h1>
+
+<p>During all the tutorial i&rsquo;m on Maverick 10.9.5, follow this tutorial on Unix system will be almost similar.
+I use brew to manage the packages.</p>
+
+<h3>MongoDB</h3>
+
+<pre><code class="Bash">
+$ brew update 
+
+$ brew install mongodb # Install MongoDB
+
+$ mongod # To run the mongodb server
+$ mongo  # To run the mongo cli
+</code></pre>
+
+<h3>NodeJS</h3>
+
+<pre><code class="bash">$ brew install node # Install NodeJS
+</code></pre>
+
+<h2>NPM packages.</h2>
+
+<p>NodeJS come with his own package manager called <code>npm</code>.
+This package will be helpful to install the modules we need.
+Let&rsquo;s see how to install them.</p>
+
+<p>I use the <code>--save</code> argument in order to add this module in the <code>package.json</code> file, which describe the configuration of our application.</p>
+
+<h3>Express</h3>
+
+<p>The web framework.</p>
+
+<pre><code class="bash">$ npm install --save express
+</code></pre>
+
+<h3>Mongoose</h3>
+
+<p>Mongoose provides a straight-forward, schema-based solution to modeling your application data and includes built-in type casting, validation, query building, business logic hooks and more, out of the box with NodeJS.</p>
+
+<pre><code class="bash">$ npm install --save mongoose
+</code></pre>
+
+<h3>Yeoman</h3>
+
+<p>Yeoman is a generator in order to scaffold a robust and productive base for your project.
+There are a lots of generator. We are going to use the <a href="https://github.com/yeoman/generator-angular">angular</a>
+ one.</p>
+
+<p>It will be very convenient and usefull to start our front-end part.</p>
+
+<pre><code class="bash">$ npm install -g --save generator-angular
+</code></pre>
+
+<p>npm will fetch all the modules and install them.</p>
+
+<pre><code class="bash">$ npm init 
+</code></pre>
+
+<p>This utility will walk you through creating a package.json file.
+Enter your information, and then let generate the file.</p>
+
+<h1>Directory structure</h1>
+
+<p>You can create your own, i suggest a simple application tree, reusable and flexible.</p>
+
+<pre><code class="bash  the directory structure">$ ls
+    back/ 
+    front/ 
+    node_modules/ 
+    package.json 
+</code></pre>
+
+<h1>Back end part</h1>
+
+<h3>Server</h3>
+
+<p>We are going to create our server.</p>
+
+<pre><code class="javascript back/server.js">(function(){
+
+    var express = require('express')
+      , app = express();
+
+    app.get('/', function(req, res){
+        res.send('Hello World ! ');
+    });
+
+
+    app.listen(8081);
+})();
+</code></pre>
+
+<p>We have here a simple express instance that listens on 8081 port and sends a string when the route is called.</p>
+
+<p>Launch the node instance with <code>node server.js</code> and fetch the route.</p>
+
+<p><img src="/images/curl_localhost.png" title="" ></p>
+
+<p>Ok that&rsquo;s cool, we now have our server.
+Let&rsquo;s organize us by creating folders.</p>
+
+<ul>
+<li><strong>models</strong> : This folder will be dedicated to our MongoDb Schema.</li>
+<li><strong>routes</strong> : this folder will contains all the controller corresponding to routes.</li>
+</ul>
+
+
+<pre><code class="bash mean/back/">.
+├── server.js 
+├── models 
+└── routes  
+</code></pre>
+
+<h3>Routing</h3>
+
+<p>Let&rsquo;s first create a route by creating a simple file.</p>
+
+<pre><code class="javascript routes/index.js ">module.exports = (function(){
+    'use strict';
+
+    // The express module
+    var express = require('express')
+      , router = express.Router(); // Routing service of express 
+
+    //Our default route 
+    router.get('/', function(req, res) {
+        res.send("Hello World from router ! ");
+    });
+
+    return router;
+})();
+</code></pre>
+
+<p>We shift all the routing logic in a dedicated controller.
+This will be more scalable, testable and organized.</p>
+
+<p>We will no use this route in the <code>server.js</code> file.</p>
+
+<pre><code class="javascript back/server.js">(function(){
+
+    var express = require('express')
+      , app = express()
+      , index = require('./routes/index'); 
+
+    app.use('/rest', index); 
+    // etc
+</code></pre>
+
+<p><code>app.user</code> indicate to express that all route which begin with <code>/rest</code> will be redirected to routes which are in the <code>routes/index.js</code> file.</p>
+
+<p><img src="/images/curl_from_router.png" title="" ></p>
+
+<h3>Helpers</h3>
+
+<p>You notice, that each time we made a modification to any <strong>NodeJS</strong> file, we must rerun the server, which is not very handy.</p>
+
+<p>Fortunatly a npm package, called <code>nodemon</code> is here to assure hot reload code for NodeJS files.</p>
+
+<pre><code class="bash install nodemon">$ npm install -g nodemon # Install the package
+$ nodemon server.js # Run the server
+</code></pre>
+
+<p><img src="/images/nodemon.png" title="" ></p>
+
+<p>Another intersting feature would be the ability to have a log feature, that will simply display an output into the node.js console each time a route has been called.</p>
+
+<pre><code class="javascript server.js">// The logging function
+function log_node(callback){
+    return function(req, res, next) {
+        console.log(new Date().toDateString() + " : " + req.method + " =&gt; " + req.url);
+        callback.call(null, req, res, next);
+    }
+}
+</code></pre>
+
+<p>Apply the function to the use method.</p>
+
+<pre><code class="javascript server.js">// Change the line and add the function
+app.use('/', log_node(index));
+</code></pre>
+
+<p>Query the route and you will see an output in the console !</p>
+
+<p>This function, is very simple and you can obviously create a specific module, with some filter for particular route, colors, etc.</p>
+
+<h2>Mongoose + NodeJS</h2>
+
+<p>Now that we isolate the business layer, it&rsquo;s time to use the persistence layer.
+I present you earlier <strong>mongoose</strong> which provides a straight-forward, schema-based solution to modeling your application data and includes built-in type casting, validation, query building, business logic hooks and more, out of the box.</p>
+
+<pre><code class="javascript example of use">var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/test');
+
+var Cat = mongoose.model('Cat', { name: String });
+
+var kitty = new Cat({ name: 'Zildjian' });
+kitty.save(function (err) {
+  if (err) // ...
+  console.log('meow');
+});
+</code></pre>
+
+<p>To start with mongoose, let&rsquo;s create first a configuration file in a folder called <strong>conf</strong>.</p>
+
+<pre><code class="javascript back/conf/general.js">
+module.exports = (function(){
+
+    exports.mongodb = {
+        host: 'localhost',
+        db: 'mean',
+        opt: {}
+    };
+
+    return exports;
+})();
+</code></pre>
+
+<p>Add the configuration file to the server.</p>
+
+<pre><code class="javascript server.js">
+app = express(),
+conf = require('./conf/general'), // Our configuration
+mongoose = require('mongoose');  // Mongoose library
+
+// ...
+</code></pre>
+
+<p>Now create some connection function, in order to connect to mongo.</p>
+
+<pre><code class="javascript server.js">// Connection
+mongoose.connect('mongodb://'+ conf.mongodb.host + '/' + conf.mongodb.db, conf.mongodb.opt);
+
+// Assign event to the MongoDB instance.
+mongoose.connection.on('open', function(ref){
+    console.log("connection to mongo server " + conf.mongodb.host);
+});
+
+mongoose.connection.on('error', function(err){
+    console.log(err);
+});
+
+mongoose.connection.on('disconnected', function(){
+    console.log("Disconnected");
+});
+</code></pre>
+
+<p>Cool we can now connect our application to the database.</p>
+
+<p><strong>Remeber</strong> to start the MongoDb server with <code>mongod</code> before, launching the server or a beautiful error will show up ;) !</p>
+
+<h2>Data models</h2>
+
+<p>Data in MongoDB has a flexible schema. Collections do not enforce document structure. This flexibility gives you data-modeling choices to match your application and its performance requirements.</p>
+
+<p>In mongoDB, the data models are representend by Schema (which are simply JSON object).</p>
+
+<p><a href="http://docs.mongodb.org/manual/data-modeling/">More about MongoDb&rsquo;s data modeling</a></p>
+
+<p>Mongoose, allow us to easily design our pattern of data.
+Create one called fooBar</p>
+
+<pre><code class="javascript models/fooBar.js">var mongoose = require('mongoose')
+  , Schema = mongoose.Schema;
+
+/**
+* fooBar model. 
+* name : String
+* type : String 
+* toString() : String  
+* 
+* A really nice model. 
+*/
+'use strict';
+
+exports.schema = new Schema({
+    name: String,
+    type: String
+});
+
+exports.schema.statics.toString = function(){
+    return "Hello i'm " + this.name + " a  " + this.type + " schema ! ";
+};
+
+// Very important, in order to compile the mongoose's schema definition.
+module.exports = mongoose.model('fooBar', exports.schema);
+</code></pre>
+
+<p>Let&rsquo;s use this schema in our controller.</p>
+
+<pre><code class="javascript routes/index.js">var fooBar = require('../models/fooBar');
+
+...
+
+router.get('/fooBar', function(req, res){
+    new fooBar({
+        name: "Louis",
+        type: "JavaScript loverz"
+    }).save(function(err){
+        if(err) throw err;
+        res.send(" It's in the databases now ! ");
+    });
+});
+</code></pre>
+
+<p>I should have normaly use a POST method, in order to persist the new document, but for the purpose of the example, i use a GET.</p>
+
+<p><img src="/images/fooBarnew.png" title="" ></p>
+
+<p>Open a new terminal and go the mongo cli to verify that our model has beed saved.</p>
+
+<p><img src="/images/mongoConsole.png" title="" ></p>
+
+<p>Cool, isn&rsquo;t it ? :)</p>
+
+<h1>Front-end part.</h1>
+
+<p>It&rsquo;s not an obligation to use that tool, and you can grab all the angular component by hand and generate your own directory structure.</p>
+
+<pre><code class="bash ">$ cd front &amp;&amp; yo angular
+</code></pre>
+
+<p>This command will, create the basic architecture of the angular application.</p>
+
+<p>There are small questions in order to choose usefull library as <em>angular-route</em> or <em>angular-animate</em>.</p>
+
+<p>Select <strong>angular-route</strong>.</p>
+
+<p>Yeoman will fetch and install all the library you need with <em>npm install</em> and <em>bower install</em>.</p>
+
+<pre><code class="bash the generated directory structure">.
+├── Gruntfile.js
+├── app/
+│   ├── 404.html
+│   ├── favicon.ico
+│   ├── images/
+│   │   └── yeoman.png
+│   ├── index.html
+│   ├── robots.txt
+│   ├── scripts/
+│   │   ├── app.js
+│   │   ├── controllers
+│   │   │   ├── about.js
+│   │   │   ├── main.js
+│   ├── styles/
+│   │   └── main.css
+│   └── views/
+│       ├── about.html
+│       ├── main.html
+├── bower.json
+├── bower_components/ # Bower library
+└── node_modules/ # Node library use for grunt
+├── package.json 
+└── test/ # Karma test folder 
+</code></pre>
+
+<p>The angular-generator comes with a task manager called <a href="http://gruntjs.com/">Grunt</a>  and a package manager called <a href="http://bower.io/">Bower</a>.</p>
+
+<ul>
+<li><strong>Grunt</strong> will be very usefull to launch task as minification, test or hot-reload.</li>
+<li><strong>Bower</strong> will be used to fetch and install packages from all over, taking care of hunting, finding, downloading, and saving the stuff you’re looking for. Bower keeps track of these packages in a manifest file, bower.json.</li>
+</ul>
+
+
+<h2>Begin with yeoman</h2>
+
+<h3>Create a simple route</h3>
+
+<p>Yeoman as a good generator, will allow us to save time and will create very quickly all file required.</p>
+
+<p>For example let create our first route.</p>
+
+<pre><code class="bash ">$ yo angular:route foo
+</code></pre>
+
+<p>Yeoman going to automaticaly add a route in <code>app.js</code></p>
+
+<pre><code class="javascript app.js">.when('/foo', {
+    templateUrl: 'views/foo.html',
+    controller: 'FooCtrl'
+})
+</code></pre>
+
+<p>To access the page, we have two solutions.</p>
+
+<ul>
+<li>Access the front folder, with a Apache or NGiNX server.</li>
+<li>Use the grunt task <code>server</code> in order to emulate a server.</li>
+</ul>
+
+
+<p>It will function similar to an Apache server, serving up static files based on their path, but uses the http module via connect to set it up.</p>
+
+<p>In addition to run the server, this task will passing all Karma test, activate hot-reload by watching file for modification.</p>
+
+<p>All the task are register in the <strong>Gruntfile.js</strong> file.</p>
+
+<pre><code class="bash front/">$ grunt serve
+</code></pre>
+
+<p>Browse the <code>http://localhost:9000/#/foo</code> et voila ! :)</p>
+
+<p>Go to the part <a href="/blog/2014/10/02/hacking-mean-part2/">two</a>.</p>
+
+<p>For any questions or additional information, please feel free to comment !</p>
+
+<h1>Troubleshooting</h1>
+
+<h2>Fatal error: Unable to find local grunt. (Front)</h2>
+
+<p>Grunt does not install correctly.</p>
+
+<pre><code class="bash ">$ sudo npm install grunt --save-dev
+$ npm install 
+</code></pre>
+
+<h2>ERROR: dbpath (/data/db) does not exist. (Mongod)</h2>
+
+<p>MongoDb need a path to store all the data.</p>
+
+<pre><code class="bash">$ sudo mongod --dbpath=/path/to/your/data/folder
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>
