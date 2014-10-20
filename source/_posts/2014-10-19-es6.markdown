@@ -47,7 +47,7 @@ It's very easy to create modules.
 ## We have the mother class.
 
 ```javascript 
-class Vehicule {
+class Vehicle {
     constructor(name) {
         this.name = name;
     }
@@ -130,11 +130,11 @@ function foo() {
 }
 // var
 function bar() {
-    // bar is visible out here.
+    // foo is visible out here.
     for(var foo = 0 ; foo < 10 ; ++foo){
-        // bar is visible 
+        // foo is visible 
     }
-    // bar is visible
+    // foo is visible
 }
 ```
 
@@ -167,7 +167,7 @@ let promise = new Promise((resolve, reject) => {
     });
 
 
-// In an other file ... 
+// In a theorical way
 promise.
     then((data) => { 
         console.log(data);
