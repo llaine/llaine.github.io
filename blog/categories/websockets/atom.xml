@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Websockets | Lainé Louis]]></title>
-  <link href="https://llaine.github.io//blog/categories/websockets/atom.xml" rel="self"/>
-  <link href="https://llaine.github.io//"/>
-  <updated>2014-10-19T16:57:45+02:00</updated>
-  <id>https://llaine.github.io//</id>
+  <link href="http://llaine.github.io/blog/categories/websockets/atom.xml" rel="self"/>
+  <link href="http://llaine.github.io/"/>
+  <updated>2014-10-20T18:45:08+02:00</updated>
+  <id>http://llaine.github.io/</id>
   <author>
     <name><![CDATA[Lainé Louis]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Introduction to webSockets With NodeJS]]></title>
-    <link href="https://llaine.github.io//blog/2014/10/12/websocket/"/>
+    <link href="http://llaine.github.io/blog/2014/10/12/websocket/"/>
     <updated>2014-10-12T12:12:09+02:00</updated>
-    <id>https://llaine.github.io//blog/2014/10/12/websocket</id>
+    <id>http://llaine.github.io/blog/2014/10/12/websocket</id>
     <content type="html"><![CDATA[<h1>Introduction</h1>
 
 <p>Today a small article about a new web standard, the webSockets.</p>

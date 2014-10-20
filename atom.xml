@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Lainé Louis]]></title>
-  <link href="https://llaine.github.io//atom.xml" rel="self"/>
-  <link href="https://llaine.github.io//"/>
-  <updated>2014-10-19T16:57:45+02:00</updated>
-  <id>https://llaine.github.io//</id>
+  <link href="http://llaine.github.io/atom.xml" rel="self"/>
+  <link href="http://llaine.github.io/"/>
+  <updated>2014-10-20T18:45:08+02:00</updated>
+  <id>http://llaine.github.io/</id>
   <author>
     <name><![CDATA[Lainé Louis]]></name>
     
@@ -15,16 +15,16 @@
   
   <entry>
     <title type="html"><![CDATA[ECMAScript 6 Overview]]></title>
-    <link href="https://llaine.github.io//blog/2014/10/19/es6/"/>
+    <link href="http://llaine.github.io/blog/2014/10/19/es6/"/>
     <updated>2014-10-19T12:45:46+02:00</updated>
-    <id>https://llaine.github.io//blog/2014/10/19/es6</id>
+    <id>http://llaine.github.io/blog/2014/10/19/es6</id>
     <content type="html"><![CDATA[<p>After a great day at <a href="bdx.io">bdx.io</a>, i&rsquo;m going to present you the newest features about ECMAScript 6.</p>
 
 <h1>Intro</h1>
 
 <p>ES6 is the new version of JavaScript.</p>
 
-<p>Will be release at mid 2015.</p>
+<p>Will be released at mid 2015.</p>
 
 <p>Let&rsquo;s see what&rsquo;s new !</p>
 
@@ -72,7 +72,7 @@
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kr">class</span> <span class="nx">Vehicule</span> <span class="p">{</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kr">class</span> <span class="nx">Vehicle</span> <span class="p">{</span>
 </span><span class='line'>    <span class="nx">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
 </span><span class='line'>    <span class="p">}</span>
@@ -198,11 +198,11 @@
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'><span class="c1">// var</span>
 </span><span class='line'><span class="kd">function</span> <span class="nx">bar</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="c1">// bar is visible out here.</span>
+</span><span class='line'>    <span class="c1">// foo is visible out here.</span>
 </span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="nx">foo</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="p">;</span> <span class="o">++</span><span class="nx">foo</span><span class="p">){</span>
-</span><span class='line'>        <span class="c1">// bar is visible </span>
+</span><span class='line'>        <span class="c1">// foo is visible </span>
 </span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="c1">// bar is visible</span>
+</span><span class='line'>    <span class="c1">// foo is visible</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -256,7 +256,7 @@
 </span><span class='line'>    <span class="p">});</span>
 </span><span class='line'>
 </span><span class='line'>
-</span><span class='line'><span class="c1">// In an other file ... </span>
+</span><span class='line'><span class="c1">// In a theorical way</span>
 </span><span class='line'><span class="nx">promise</span><span class="p">.</span>
 </span><span class='line'>    <span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
 </span><span class='line'>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
@@ -503,9 +503,9 @@
   
   <entry>
     <title type="html"><![CDATA[Introduction to webSockets With NodeJS]]></title>
-    <link href="https://llaine.github.io//blog/2014/10/12/websocket/"/>
+    <link href="http://llaine.github.io/blog/2014/10/12/websocket/"/>
     <updated>2014-10-12T12:12:09+02:00</updated>
-    <id>https://llaine.github.io//blog/2014/10/12/websocket</id>
+    <id>http://llaine.github.io/blog/2014/10/12/websocket</id>
     <content type="html"><![CDATA[<h1>Introduction</h1>
 
 <p>Today a small article about a new web standard, the webSockets.</p>
@@ -1055,9 +1055,9 @@ Whe have here a server listenning to the <strong>1337</strong> port.</p>
   
   <entry>
     <title type="html"><![CDATA[Hacking MEAN Get Started With Your Own, Part 2]]></title>
-    <link href="https://llaine.github.io//blog/2014/10/02/hacking-mean-part2/"/>
+    <link href="http://llaine.github.io/blog/2014/10/02/hacking-mean-part2/"/>
     <updated>2014-10-02T08:51:35+02:00</updated>
-    <id>https://llaine.github.io//blog/2014/10/02/hacking-mean-part2</id>
+    <id>http://llaine.github.io/blog/2014/10/02/hacking-mean-part2</id>
     <content type="html"><![CDATA[<p>Now that we have both part operationnal, let&rsquo;s create a simple application.</p>
 
 <p>I&rsquo;m a music lover, so why don&rsquo;t create a simple music library. :)</p>
@@ -1890,9 +1890,9 @@ You can use old good <code>curl -X POST</code>, but Postman is very usefull.</p>
   
   <entry>
     <title type="html"><![CDATA[Hacking MEAN Get Started With Your Own, Part 1]]></title>
-    <link href="https://llaine.github.io//blog/2014/10/02/hacking-mean-part1/"/>
+    <link href="http://llaine.github.io/blog/2014/10/02/hacking-mean-part1/"/>
     <updated>2014-10-02T08:39:51+02:00</updated>
-    <id>https://llaine.github.io//blog/2014/10/02/hacking-mean-part1</id>
+    <id>http://llaine.github.io/blog/2014/10/02/hacking-mean-part1</id>
     <content type="html"><![CDATA[<h1>Introduction</h1>
 
 <p>The MEAN term refer to a collection of JavaScript based technologies used to develop web applications.</p>
@@ -2051,7 +2051,7 @@ Enter your information, and then let generate the file.</p>
 
 <p>Launch the node instance with <code>node server.js</code> and fetch the route.</p>
 
-<p><img src="https://llaine.github.io//images/curl_localhost.png" title="" ></p>
+<p><img src="http://llaine.github.io/images/curl_localhost.png" title="" ></p>
 
 <p>Ok that&rsquo;s cool, we now have our server.
 Let&rsquo;s organize us by creating folders.</p>
@@ -2134,7 +2134,7 @@ This will be more scalable, testable and organized.</p>
 
 <p><code>app.user</code> indicate to express that all route which begin with <code>/rest</code> will be redirected to routes which are in the <code>routes/index.js</code> file.</p>
 
-<p><img src="https://llaine.github.io//images/curl_from_router.png" title="" ></p>
+<p><img src="http://llaine.github.io/images/curl_from_router.png" title="" ></p>
 
 <h3>Helpers</h3>
 
@@ -2149,7 +2149,7 @@ This will be more scalable, testable and organized.</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><img src="https://llaine.github.io//images/nodemon.png" title="" ></p>
+<p><img src="http://llaine.github.io/images/nodemon.png" title="" ></p>
 
 <p>Another intersting feature would be the ability to have a log feature, that will simply display an output into the node.js console each time a route has been called.</p>
 
@@ -2385,11 +2385,11 @@ Create one called fooBar</p>
 
 <p>I should have normaly use a POST method, in order to persist the new document, but for the purpose of the example, i use a GET.</p>
 
-<p><img src="https://llaine.github.io//images/fooBarnew.png" title="" ></p>
+<p><img src="http://llaine.github.io/images/fooBarnew.png" title="" ></p>
 
 <p>Open a new terminal and go the mongo cli to verify that our model has beed saved.</p>
 
-<p><img src="https://llaine.github.io//images/mongoConsole.png" title="" ></p>
+<p><img src="http://llaine.github.io/images/mongoConsole.png" title="" ></p>
 
 <p>Cool, isn&rsquo;t it ? :)</p>
 
@@ -2518,7 +2518,7 @@ Create one called fooBar</p>
 
 <p>Browse the <code>http://localhost:9000/#/foo</code> et voila ! :)</p>
 
-<p>Go to the part <a href="https://llaine.github.io//blog/2014/10/02/hacking-mean-part2/">two</a>.</p>
+<p>Go to the part <a href="http://llaine.github.io/blog/2014/10/02/hacking-mean-part2/">two</a>.</p>
 
 <p>For any questions or additional information, please feel free to comment !</p>
 

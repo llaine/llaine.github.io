@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Angularjs | Lainé Louis]]></title>
-  <link href="https://llaine.github.io//blog/categories/angularjs/atom.xml" rel="self"/>
-  <link href="https://llaine.github.io//"/>
-  <updated>2014-10-19T16:57:45+02:00</updated>
-  <id>https://llaine.github.io//</id>
+  <link href="http://llaine.github.io/blog/categories/angularjs/atom.xml" rel="self"/>
+  <link href="http://llaine.github.io/"/>
+  <updated>2014-10-20T18:45:08+02:00</updated>
+  <id>http://llaine.github.io/</id>
   <author>
     <name><![CDATA[Lainé Louis]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Hacking MEAN Get Started With Your Own, Part 2]]></title>
-    <link href="https://llaine.github.io//blog/2014/10/02/hacking-mean-part2/"/>
+    <link href="http://llaine.github.io/blog/2014/10/02/hacking-mean-part2/"/>
     <updated>2014-10-02T08:51:35+02:00</updated>
-    <id>https://llaine.github.io//blog/2014/10/02/hacking-mean-part2</id>
+    <id>http://llaine.github.io/blog/2014/10/02/hacking-mean-part2</id>
     <content type="html"><![CDATA[<p>Now that we have both part operationnal, let&rsquo;s create a simple application.</p>
 
 <p>I&rsquo;m a music lover, so why don&rsquo;t create a simple music library. :)</p>
@@ -586,9 +586,9 @@ angular.module('frontAppServices', [])
   
   <entry>
     <title type="html"><![CDATA[Hacking MEAN Get Started With Your Own, Part 1]]></title>
-    <link href="https://llaine.github.io//blog/2014/10/02/hacking-mean-part1/"/>
+    <link href="http://llaine.github.io/blog/2014/10/02/hacking-mean-part1/"/>
     <updated>2014-10-02T08:39:51+02:00</updated>
-    <id>https://llaine.github.io//blog/2014/10/02/hacking-mean-part1</id>
+    <id>http://llaine.github.io/blog/2014/10/02/hacking-mean-part1</id>
     <content type="html"><![CDATA[<h1>Introduction</h1>
 
 <p>The MEAN term refer to a collection of JavaScript based technologies used to develop web applications.</p>

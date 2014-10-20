@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Javascript | Lainé Louis]]></title>
-  <link href="https://llaine.github.io//blog/categories/javascript/atom.xml" rel="self"/>
-  <link href="https://llaine.github.io//"/>
-  <updated>2014-10-19T16:57:45+02:00</updated>
-  <id>https://llaine.github.io//</id>
+  <link href="http://llaine.github.io/blog/categories/javascript/atom.xml" rel="self"/>
+  <link href="http://llaine.github.io/"/>
+  <updated>2014-10-20T18:45:08+02:00</updated>
+  <id>http://llaine.github.io/</id>
   <author>
     <name><![CDATA[Lainé Louis]]></name>
     
@@ -15,16 +15,16 @@
   
   <entry>
     <title type="html"><![CDATA[ECMAScript 6 Overview]]></title>
-    <link href="https://llaine.github.io//blog/2014/10/19/es6/"/>
+    <link href="http://llaine.github.io/blog/2014/10/19/es6/"/>
     <updated>2014-10-19T12:45:46+02:00</updated>
-    <id>https://llaine.github.io//blog/2014/10/19/es6</id>
+    <id>http://llaine.github.io/blog/2014/10/19/es6</id>
     <content type="html"><![CDATA[<p>After a great day at <a href="bdx.io">bdx.io</a>, i&rsquo;m going to present you the newest features about ECMAScript 6.</p>
 
 <h1>Intro</h1>
 
 <p>ES6 is the new version of JavaScript.</p>
 
-<p>Will be release at mid 2015.</p>
+<p>Will be released at mid 2015.</p>
 
 <p>Let&rsquo;s see what&rsquo;s new !</p>
 
@@ -51,7 +51,7 @@ tesla.toString() // name = Tesla
 
 <h2>We have the mother class.</h2>
 
-<pre><code class="javascript ">class Vehicule {
+<pre><code class="javascript ">class Vehicle {
     constructor(name) {
         this.name = name;
     }
@@ -130,11 +130,11 @@ function foo() {
 }
 // var
 function bar() {
-    // bar is visible out here.
+    // foo is visible out here.
     for(var foo = 0 ; foo &lt; 10 ; ++foo){
-        // bar is visible 
+        // foo is visible 
     }
-    // bar is visible
+    // foo is visible
 }
 </code></pre>
 
@@ -164,7 +164,7 @@ let promise = new Promise((resolve, reject) =&gt; {
     });
 
 
-// In an other file ... 
+// In a theorical way
 promise.
     then((data) =&gt; { 
         console.log(data);
@@ -315,9 +315,9 @@ for (let value of map.values()) {
   
   <entry>
     <title type="html"><![CDATA[Introduction to webSockets With NodeJS]]></title>
-    <link href="https://llaine.github.io//blog/2014/10/12/websocket/"/>
+    <link href="http://llaine.github.io/blog/2014/10/12/websocket/"/>
     <updated>2014-10-12T12:12:09+02:00</updated>
-    <id>https://llaine.github.io//blog/2014/10/12/websocket</id>
+    <id>http://llaine.github.io/blog/2014/10/12/websocket</id>
     <content type="html"><![CDATA[<h1>Introduction</h1>
 
 <p>Today a small article about a new web standard, the webSockets.</p>
@@ -636,9 +636,9 @@ var stdin = process.openStdin();
   
   <entry>
     <title type="html"><![CDATA[Hacking MEAN Get Started With Your Own, Part 2]]></title>
-    <link href="https://llaine.github.io//blog/2014/10/02/hacking-mean-part2/"/>
+    <link href="http://llaine.github.io/blog/2014/10/02/hacking-mean-part2/"/>
     <updated>2014-10-02T08:51:35+02:00</updated>
-    <id>https://llaine.github.io//blog/2014/10/02/hacking-mean-part2</id>
+    <id>http://llaine.github.io/blog/2014/10/02/hacking-mean-part2</id>
     <content type="html"><![CDATA[<p>Now that we have both part operationnal, let&rsquo;s create a simple application.</p>
 
 <p>I&rsquo;m a music lover, so why don&rsquo;t create a simple music library. :)</p>
@@ -1207,9 +1207,9 @@ angular.module('frontAppServices', [])
   
   <entry>
     <title type="html"><![CDATA[Hacking MEAN Get Started With Your Own, Part 1]]></title>
-    <link href="https://llaine.github.io//blog/2014/10/02/hacking-mean-part1/"/>
+    <link href="http://llaine.github.io/blog/2014/10/02/hacking-mean-part1/"/>
     <updated>2014-10-02T08:39:51+02:00</updated>
-    <id>https://llaine.github.io//blog/2014/10/02/hacking-mean-part1</id>
+    <id>http://llaine.github.io/blog/2014/10/02/hacking-mean-part1</id>
     <content type="html"><![CDATA[<h1>Introduction</h1>
 
 <p>The MEAN term refer to a collection of JavaScript based technologies used to develop web applications.</p>
