@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Scalability | Lainé Louis]]></title>
+  <link href="http://llaine.github.io/blog/categories/scalability/atom.xml" rel="self"/>
+  <link href="http://llaine.github.io/"/>
+  <updated>2015-02-04T13:00:40+01:00</updated>
+  <id>http://llaine.github.io/</id>
+  <author>
+    <name><![CDATA[Lainé Louis]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to Scale With Php?]]></title>
+    <link href="http://llaine.github.io/blog/2015/02/04/how-to-scale-with-php-and-mysql/"/>
+    <updated>2015-02-04T12:20:56+01:00</updated>
+    <id>http://llaine.github.io/blog/2015/02/04/how-to-scale-with-php-and-mysql</id>
+    <content type="html"><![CDATA[<h2>Abstract</h2>
+
+<p>So today, a little article on the scalability of PHP legacy applications.</p>
+
+<h2>Use case</h2>
+
+<p>Suppose we have a codebase in PHP which we can not change.
+How to scale the app to 500 request by second ?</p>
+
+<h3>What we have :</h3>
+
+<ul>
+<li>PHP 5.3</li>
+<li>Spaghetti code</li>
+<li>Strong dependency coupling</li>
+<li>MySQL Database</li>
+</ul>
+
+
+<p>Okay let&rsquo;s talk a little bit about scalability :</p>
+
+<p><strong>Scalability</strong> : is ability of a system, network, or process to handle a growing amount of work in a capable manner or its ability to be enlarged to accommodate that growth._</p>
+
+<ul>
+<li>Horinzontal scalability : means to add more nodes to a system, such as adding a new computer to a distributed software application</li>
+<li>Vertical scalability : means to add resources to a single node in a system, typically involving the addition of CPUs or memory to a single computer.</li>
+</ul>
+
+
+<h2>Back to the use case</h2>
+
+<p>In order to begin sovling the problem, let&rsquo;s remind something. PHP is based on HTTP which is stateless by default.
+Which mean that the whole memory is destroyed after the request.</p>
+
+<p>That&rsquo;s a pretty good news! :)</p>
+
+<p><strong>BUT</strong></p>
+
+<p>Everything is stateless, expect from the session</p>
+
+<p><img src="/images/meme.jpg" title="" ></p>
+
+<h3>How to deal with the session ?</h3>
+
+<ol>
+<li>Install memcacheD</li>
+<li>In the <em>php.ini</em>
+
+<ul>
+<li><code>session.save_handler = memcached</code></li>
+<li><code>session.save_path = goteMemcacheD :port</code></li>
+</ul>
+</li>
+<li>Reloading Apahe!</li>
+</ol>
+
+
+<p>Aaaaaand that&rsquo;s all !!</p>
+
+<h2>Performance</h2>
+
+<h4>opCode cache</h4>
+
+<ul>
+<li>APC for php 5.3 (which you shouldn&rsquo;t use) : <code>apc.stat = 0</code> (avoid I/O on disk)</li>
+</ul>
+
+
+<p>By default include in PHP 5.5
+- <code>opcache.enable = on</code> in the <em>php.ini</em>
+- <code>opcache.validate_timestamp = 0</code> (avoid I/O on disk)$</p>
+
+<h1>The database (Oh sh*t)</h1>
+
+<p>the database is most of the time the last things that is the problem (is this often your codebase).</p>
+
+<p>But we can optimize it :) !</p>
+
+<h2>How to ?</h2>
+
+<ul>
+<li>Provide a loooot of ram (much than the database size)</li>
+<li><code>innodb_buffer_pool_size</code> needs to be as high as possible (5-6GB)</li>
+<li><code>mysql_query_cache</code> with a good value.</li>
+<li>Create a looooots of index in column which are you for &lsquo;WHERE&rsquo; statements or joins.</li>
+</ul>
+
+
+<h2>Doctrine 2</h2>
+
+<p>Use as much as you can eager loading.</p>
+
+<p>You also can use a mysql_cluster (which is quite complicated to install but it&rsquo;s like the rolls royce of mysql).</p>
+
+<p><img src="/images/mysql_cluster.png" title="" ></p>
+
+<h1>Infrastructure</h1>
+
+<ol>
+<li>Use a varnish, for statics assets.</li>
+<li>Provisionning tools like Ansible for servers configuration.</li>
+</ol>
+
+
+<p>Aaand that&rsquo;s all :) !</p>
+]]></content>
+  </entry>
+  
+</feed>
